@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bill.Menu_DonDat"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/btnHDX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hoá Đơn Xe">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btnHDPT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hoá Đơn PT">
+
+    </Button>
+
+</LinearLayout>

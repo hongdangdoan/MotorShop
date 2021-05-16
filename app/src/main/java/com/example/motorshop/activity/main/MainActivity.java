@@ -1,15 +1,19 @@
 package com.example.motorshop.activity.main;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.motorshop.activity.R;
+import com.example.motorshop.activity.bill.Menu_DonDat;
+import com.example.motorshop.activity.bill.QuanLy_DonDat;
 import com.example.motorshop.activity.brand.BrandActivity;
 import com.example.motorshop.activity.product.ProductActivity;
 import com.example.motorshop.datasrc.MainItem;
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
         gvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -74,17 +81,23 @@ public class MainActivity extends AppCompatActivity {
                 if(position == 0){
                     Intent intent = new Intent(getApplicationContext(), BrandActivity.class);
                     startActivity(intent);
+
                     Log.d(TAG, "onItemClick gridview: " + itemList.get(position).getName());
                 }
                 if(position == 1){
                     Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
                     startActivity(intent);
                     Log.d(TAG, "onItemClick gridview: " + itemList.get(position).getName());
+
                 }
-                if(position == 2){
-                    Intent intent = new Intent(getApplicationContext(), BrandActivity.class);
+                if(position == 2){//BILL
+
+
+
+                    Intent intent = new Intent(getApplicationContext(), Menu_DonDat.class);
                     startActivity(intent);
                     Log.d(TAG, "onItemClick gridview: " + itemList.get(position).getName());
+
                 }
                 if(position == 3){
                     Intent intent = new Intent(getApplicationContext(), BrandActivity.class);
@@ -172,5 +185,7 @@ public class MainActivity extends AppCompatActivity {
         itemList.add(new MainItem(R.drawable.statistic, getResources().getString(R.string.statistics)));
         itemList.add(new MainItem(R.drawable.people, getResources().getString(R.string.people)));
     }
+
+
 
 }

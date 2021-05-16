@@ -77,7 +77,6 @@
     <string name="brand_name">Tên Hãng</string>
 
 
-
     //Product
     <string name="products">Sản Phẩm</string>
     <string name="product_manage">Quản Lý Sản Phẩm</string>
@@ -137,5 +136,49 @@
     //Guarantee
     <string name="guarantees">Bảo Hành</string>
 
+
+    <string name="iconQLDDX">&#xf0d1;</string>
+    <string name="iconQLDDPT">&#xf0ad;</string>
+    <string name="themDDX">THÊM DDX</string>
+    <string name="QLDDX">QL DDX</string>
+    <string name="chiTietDDX">CHI TIẾT DDX</string>
+    <string name="QLDDPT">QL DDPT</string>
+    <string name="tongTien">Tổng tiền</string>
+    <string name="hoTenKH">HoTenKH</string>
+    <string name="txtViewNgayDat">Ngày đặt</string>
+    <string name="txtViewMaDDH">Mã DDH</string>
+    <string name="txtViewTongTienGiamDan">Tổng tiền giảm dần</string>
+    <string name="txtViewTongTienTangDan">Tổng tiền tăng dần</string>
+    <string name="txtViewSapXep">Sắp xếp</string>
+    <string name="txtViewGiaiDoan">Giai đoạn</string>
+    <string name="txtViewDonTrongThang">Đơn trong tháng</string>
+    <string name="txtViewDonTrongNgay">Đơn trong ngày</string>
+    <string name="iconbtnSearch">&#xf002;</string>
+    <string name="hintNhapMaDDH">Nhập Mã DDH hoặc SDTKH</string>
+    <string name="txtViewQuanLyDonDatXe">Quản lý Đơn Đặt Xe</string>
+    <string name="txtViewQuanLyDonDat">QUẢN LÝ ĐƠN ĐẶT</string>
+    <string name="txtViewChiTietDonDatXe">CHI TIẾT ĐƠN ĐẶT XE</string>
+    <string name="hintNhapMaDDHVaoDay">Nhập Mã DDH vào đây</string>
+    <string name="txtViewMaNV">MaNV</string>
+    <string name="txtViewHoTenNV">HotenNV</string>
+    <string name="txtViewSdtKH">SdtKH</string>
+    <string name="txtViewHoTenKH">HoTenKH</string>
+    <string name="txtViewTongTien">Tổng tiền</string>
+    <string name="txtViewTenXe">Tên Xe</string>
+    <string name="txtViewSoLuong">Số lượng</string>
+    <string name="txtViewThanhTien">Thành tiền</string>
+    <string name="chiTietDDPT">CHI TIẾT DDPT</string>
+    <string name="txtViewThemDDPT">THÊM DDPT</string>
+    <string name="txtViewLoc">Lọc</string>
+    <string name="txtViewQLDDPT">QL DDPT</string>
+    <string name="txtViewChiTietDonDatPT">CHI TIẾT ĐƠN ĐẶT PHỤ TÙNG</string>
+    <string name="txtViewQuanLyDonDatPT">Quản lý đơn đặt phụ tùng</string>
+    <string name="txtViewHoaDonBanHang">Hoá ĐƠN BÁN HÀNG</string>
+    <string name="txtViewDiaChiKH">Địa chỉ</string>
+    <string name="txtViewCapNhat">Cập nhật</string>
+    <string name="txtViewMaXe">Mã xe</string>
+    <string name="btnXong">Xong</string>
+    <string name="txtViewDonGia">Đơn giá</string>
+    <string name="hintChonXe">Chọn xe</string>
 
 </resources>
