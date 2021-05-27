@@ -311,7 +311,7 @@ public class DonDat extends AppCompatActivity {
 
         System.out.println(tbLayout.getChildCount());
         if (tbLayout.getChildCount() > 2)
-            for (int i = dsHH.size() + 1; i < tbLayout.getChildCount(); i++) {
+            for (int i = tbLayout.getChildCount()-1; i> dsHH.size(); i--) {
                 tbLayout.removeViewAt(i);
             }
 
