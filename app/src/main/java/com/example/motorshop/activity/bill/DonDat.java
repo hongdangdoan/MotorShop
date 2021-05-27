@@ -167,9 +167,10 @@ public class DonDat extends AppCompatActivity {
 
     private void iniInfKH() {
         System.out.println("kiem tra");
+        String cmnd = edtCmnd.getText().toString();
         System.out.println(dsKH.size());
         for(int i=0;i<dsKH.size();i++){
-            if(edtCmnd.getText().equals(dsKH.get(i).getCmnd())){
+            if(cmnd.equals(dsKH.get(i).getCmnd())){
 
                 edtHoTen.setText(dsKH.get(i).getHoTen());
                 edtDiaChi.setText(dsKH.get(i).getDiaChi());
