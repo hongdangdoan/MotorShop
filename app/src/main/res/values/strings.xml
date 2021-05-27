@@ -180,5 +180,7 @@
     <string name="btnXong">Xong</string>
     <string name="txtViewDonGia">Đơn giá</string>
     <string name="hintChonXe">Chọn xe</string>
+    <string name="txtViewCMND">CMND</string>
+    <string name="edtTextHoaDon_MaHD">Check</string>
 
 </resources>

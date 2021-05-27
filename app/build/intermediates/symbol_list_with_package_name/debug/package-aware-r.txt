@@ -1803,6 +1803,7 @@ id btnCancelDP
 id btnCapNhap
 id btnHDPT
 id btnHDX
+id btnHoaDon_Check
 id btnInsertDP
 id btnInsertPD
 id btnLogin
@@ -1885,10 +1886,10 @@ id easeInOut
 id easeOut
 id edit_query
 id edtHoaDon_ThanhTien
+id edtTextHoaDon_CMNDKH
 id edtTextHoaDon_DiaChi
 id edtTextHoaDon_HoTenKH
 id edtTextHoaDon_MaHD
-id edtTextHoaDon_SdtKH
 id edtTextThgianBatDau
 id edtTextThgianKetThuc
 id edtTextnhapMaDDH
@@ -2148,6 +2149,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView_listItem
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2272,6 +2274,7 @@ layout activity_product
 layout activity_quan_ly_don_dat
 layout activity_verify
 layout custom_dialog
+layout custom_list_item
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -2428,6 +2431,7 @@ string department_manage
 string department_name
 string departments
 string edit
+string edtTextHoaDon_MaHD
 string email
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -2537,6 +2541,7 @@ string status_bar_notification_info_overflow
 string themDDX
 string title_main
 string tongTien
+string txtViewCMND
 string txtViewCapNhat
 string txtViewChiTietDonDatPT
 string txtViewChiTietDonDatXe

@@ -27,6 +27,11 @@
             android:id="@+id/edtTextHoaDon_MaHD"
             android:layout_width="150dp"
             android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnHoaDon_Check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edtTextHoaDon_MaHD"/>
     </LinearLayout>
 
     <LinearLayout
@@ -47,10 +52,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtViewSdtKH" />
+            android:text="@string/txtViewCMND" />
 
         <EditText
-            android:id="@+id/edtTextHoaDon_SdtKH"
+            android:id="@+id/edtTextHoaDon_CMNDKH"
             android:layout_width="150dp"
             android:layout_height="wrap_content" />
 

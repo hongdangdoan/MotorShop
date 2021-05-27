@@ -1802,6 +1802,7 @@ int id btnCancelDP 0x7f08005d
 int id btnCapNhap 0x7f0801d4
 int id btnHDPT 0x7f0801f1
 int id btnHDX 0x7f0801f2
+int id btnHoaDon_Check 0x7f0801f5
 int id btnInsertDP 0x7f08005e
 int id btnInsertPD 0x7f08005f
 int id btnLogin 0x7f080060
@@ -1884,10 +1885,10 @@ int id easeInOut 0x7f0800a4
 int id easeOut 0x7f0800a5
 int id edit_query 0x7f0800a6
 int id edtHoaDon_ThanhTien 0x7f0801dd
+int id edtTextHoaDon_CMNDKH 0x7f0801f4
 int id edtTextHoaDon_DiaChi 0x7f0801de
 int id edtTextHoaDon_HoTenKH 0x7f0801df
 int id edtTextHoaDon_MaHD 0x7f0801e0
-int id edtTextHoaDon_SdtKH 0x7f0801e1
 int id edtTextThgianBatDau 0x7f0801e2
 int id edtTextThgianKetThuc 0x7f0801e3
 int id edtTextnhapMaDDH 0x7f0801e4
@@ -2147,6 +2148,7 @@ int id textSpacerNoButtons 0x7f08019d
 int id textSpacerNoTitle 0x7f08019e
 int id textStart 0x7f08019f
 int id textTop 0x7f0801a0
+int id textView_listItem 0x7f0801f3
 int id text_input_end_icon 0x7f0801a1
 int id text_input_error_icon 0x7f0801a2
 int id text_input_start_icon 0x7f0801a3
@@ -2271,6 +2273,7 @@ int layout activity_product 0x7f0b0020
 int layout activity_quan_ly_don_dat 0x7f0b007a
 int layout activity_verify 0x7f0b0021
 int layout custom_dialog 0x7f0b0022
+int layout custom_list_item 0x7f0b007d
 int layout design_bottom_navigation_item 0x7f0b0023
 int layout design_bottom_sheet_dialog 0x7f0b0024
 int layout design_layout_snackbar 0x7f0b0025
@@ -2427,6 +2430,7 @@ int string department_manage 0x7f0f0036
 int string department_name 0x7f0f0037
 int string departments 0x7f0f0038
 int string edit 0x7f0f0039
+int string edtTextHoaDon_MaHD 0x7f0f00cd
 int string email 0x7f0f003a
 int string error_icon_content_description 0x7f0f003b
 int string exposed_dropdown_menu_content_description 0x7f0f003c
@@ -2536,6 +2540,7 @@ int string status_bar_notification_info_overflow 0x7f0f009c
 int string themDDX 0x7f0f00ad
 int string title_main 0x7f0f009d
 int string tongTien 0x7f0f00ae
+int string txtViewCMND 0x7f0f00cc
 int string txtViewCapNhat 0x7f0f00af
 int string txtViewChiTietDonDatPT 0x7f0f00b0
 int string txtViewChiTietDonDatXe 0x7f0f00b1

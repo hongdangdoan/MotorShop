@@ -8,10 +8,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.motorshop.datasrc.BoPhan;
+import com.example.motorshop.datasrc.ChiTietSanPhamDonHang;
+import com.example.motorshop.datasrc.DonHang;
+import com.example.motorshop.datasrc.KhachHang;
 import com.example.motorshop.datasrc.NhaCungCap;
 import com.example.motorshop.datasrc.NhanVien;
+import com.example.motorshop.datasrc.Xe;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBManager extends SQLiteOpenHelper {
 
@@ -19,7 +24,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public DBManager(Context context) {
         super(context, "dbMOTORSTORE.db", null, 1);
-        Log.d(TAG,"Create DB: ");
+        Log.d(TAG, "Create DB: ");
     }
 
     @Override
@@ -41,22 +46,22 @@ public class DBManager extends SQLiteOpenHelper {
         createTables.add("CREATE TABLE IF NOT EXISTS CHITIETBAOHANHXE (MABH text not null, MAXE text not null, NOIDUNGBH text not null, PHIBH int null, CONSTRAINT FK_CHITIETBAOHANHXE_BAOHANH FOREIGN KEY (MABH) REFERENCES BAOHANH(MABH), CONSTRAINT FK_CHITIETBAOHANHXE_XE FOREIGN KEY (MAXE) REFERENCES XE(MAXE), PRIMARY KEY (MABH, MAXE, NOIDUNGBH))");
         createTables.add("CREATE TABLE IF NOT EXISTS CHITIETBAOHANHPHUTUNG (MABH text not null, MAPT text not null, NOIDUNGBH text not null, PHIBH int null, CONSTRAINT FK_CHITIETBAOHANHPHUTUNG_BAOHANH FOREIGN KEY (MABH) REFERENCES BAOHANH(MABH), CONSTRAINT FK_CHITIETBAOHANHPHUTUNG_PHUTUNG FOREIGN KEY (MAPT) REFERENCES PHUTUNG(MAPT), PRIMARY KEY (MABH, MAPT, NOIDUNGBH))");
 
-        for(String str : createTables){
+        for (String str : createTables) {
             db.execSQL(str);
-            Log.d(TAG,"onCreate DB: " + str);
+            Log.d(TAG, "onCreate DB: " + str);
         }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.d(TAG,"onUpgrade DB: ");
+        Log.d(TAG, "onUpgrade DB: ");
     }
 
 
     //USED IN COMMONS
-    public boolean ifIDExist(String IDColumnName, String tableName, String condition){
+    public boolean ifIDExist(String IDColumnName, String tableName, String condition) {
         boolean exist = false;
-        String query = "select " +IDColumnName+ " from " +tableName+ " where " +IDColumnName+ " = " +condition;
+        String query = "select " + IDColumnName + " from " + tableName + " where " + IDColumnName + " = " + condition;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.getCount() > 0) {
@@ -64,55 +69,55 @@ public class DBManager extends SQLiteOpenHelper {
             String id_tmp_check = cursor.getString(0);                              //
             cursor.close();
             db.close();
-            Log.d(TAG,"Check MaBP ifIDExist: " + IDColumnName + "=" + id_tmp_check);
+            Log.d(TAG, "Check MaBP ifIDExist: " + IDColumnName + "=" + id_tmp_check);
             return true;
-        }else{
+        } else {
             cursor.close();
             db.close();
-            Log.d(TAG,"Check MaBP ifIDExist: not exist");
+            Log.d(TAG, "Check MaBP ifIDExist: not exist");
             return false;
         }
     }
 
 
     //BO PHAN (DEPARTMENT)
-    public void insertDP(BoPhan department){
+    public void insertDP(BoPhan department) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("MABP", department.getMaBP());
         values.put("TENBP", department.getTenBP());
         db.insert("BOPHAN", null, values);
         db.close();
-        Log.d(TAG,"Insert DEPARTMENT: ");
+        Log.d(TAG, "Insert DEPARTMENT: ");
     }
 
-    public void updateDP(BoPhan department){
+    public void updateDP(BoPhan department) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "Update  BOPHAN  set ";
         query += " TENBP  = '" + department.getTenBP() + "' ";
         query += " WHERE MABP  = '" + department.getMaBP() + "'";
         db.execSQL(query);
         db.close();
-        Log.d(TAG,"Update DEPARTMENT: ");
+        Log.d(TAG, "Update DEPARTMENT: ");
     }
 
-    public void deleteDP(BoPhan department){
+    public void deleteDP(BoPhan department) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM BOPHAN WHERE MABP = '" + department.getMaBP() + "'";
         db.execSQL(query);
         db.close();
-        Log.d(TAG,"Delete DEPARTMENT: ");
+        Log.d(TAG, "Delete DEPARTMENT: ");
     }
 
-    public void deleteDP(String departmentID){
+    public void deleteDP(String departmentID) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM BOPHAN WHERE MABP = '" + departmentID + "'";
         db.execSQL(query);
         db.close();
-        Log.d(TAG,"Delete DEPARTMENT with departmentID: ");
+        Log.d(TAG, "Delete DEPARTMENT with departmentID: ");
     }
 
-    public void loadDPList(ArrayList<BoPhan> departmentList){
+    public void loadDPList(ArrayList<BoPhan> departmentList) {
         departmentList.clear();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -126,26 +131,69 @@ public class DBManager extends SQLiteOpenHelper {
                 departmentList.add(department);
             } while (cursor.moveToNext());
         }
-        Log.d(TAG,"Load DEPARTMENT LIST: ");
+        Log.d(TAG, "Load DEPARTMENT LIST: ");
     }
 
 
     //NHAN VIEN (STAFF)
-    public void insertST(){ }
-    public void updateST() { }
-    public void deleteST() { }
-    public void loadSTList() { }
+    public void insertST() {
+    }
+
+    public void updateST() {
+    }
+
+    public void deleteST() {
+    }
+
+    public void loadSTList() {
+    }
 
 
     //KHACH HANG (CUSTOMER)
-    public void insertCTM() { }
-    public void updateCTM() { }
-    public void deleteCTM() { }
-    public void loadCTMList() { }
+    public void insertCTM(String cmnd, String hoTen, String diaChi, String sdt) {
+        String sqlKH = "INSERT INTO KHACHHANG (CMND,HOTEN,DIACHI,SDT) VALUES(" +
+                "'" + cmnd + "'," + "'" + hoTen + "'," + "'" + diaChi + "'," + "'" + sdt + "'" + ")";
+        SQLiteDatabase db = getWritableDatabase();
+        System.out.println(sqlKH);
+        db.execSQL(sqlKH);
 
+    }
+
+    public void updateCTM() {
+    }
+
+    public void deleteCTM() {
+    }
+
+    public void loadCTMList() {
+
+    }
+
+    public List<KhachHang> loadDsKH() {
+        List<KhachHang> listKH = new ArrayList<KhachHang>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM KHACHHANG ", null);
+
+        if (c.moveToFirst()) {
+            KhachHang kh = new KhachHang();
+            int i = 0;
+            do {
+                kh = new KhachHang();
+                kh.setCmnd(c.getString(0));
+                kh.setHoTen(c.getString(1));
+                kh.setDiaChi(c.getString(2));
+                kh.setSdt(c.getString(3));
+                listKH.add(kh);
+
+            } while (c.moveToNext());
+
+        }
+        return listKH;
+    }
 
     //NHA CUNG CAP (BRAND)
-    public void insertBR(NhaCungCap brand){
+    public void insertBR(NhaCungCap brand) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("MANCC", brand.getMaNCC());
@@ -156,40 +204,40 @@ public class DBManager extends SQLiteOpenHelper {
         values.put("LOGO", brand.getLogo());
         db.insert("NHACUNGCAP", null, values);
         db.close();
-        Log.d(TAG,"Insert BRAND: ");
+        Log.d(TAG, "Insert BRAND: ");
     }
 
-    public void updateBR(NhaCungCap brand){
+    public void updateBR(NhaCungCap brand) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "Update  NHACUNGCAP  set ";
-        query += " TENNCC  = '"+ brand.getTenNCC()+"', ";
-        query += " DIACHI  = '"+ brand.getDiaChi()+"', ";
-        query += " SDT  = '"+ brand.getSdt()+"', ";
-        query += " EMAIL  = '"+ brand.getEmail()+"', ";
-        query += " LOGO  = '"+ brand.getLogo()+"' ";
-        query += " WHERE MANCC  = '"+ brand.getMaNCC()+"'";
+        query += " TENNCC  = '" + brand.getTenNCC() + "', ";
+        query += " DIACHI  = '" + brand.getDiaChi() + "', ";
+        query += " SDT  = '" + brand.getSdt() + "', ";
+        query += " EMAIL  = '" + brand.getEmail() + "', ";
+        query += " LOGO  = '" + brand.getLogo() + "' ";
+        query += " WHERE MANCC  = '" + brand.getMaNCC() + "'";
         db.execSQL(query);
         db.close();
-        Log.d(TAG,"Update BRAND: ");
+        Log.d(TAG, "Update BRAND: ");
     }
 
-    public void deleteBR(NhaCungCap brand){
+    public void deleteBR(NhaCungCap brand) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM NHACUNGCAP WHERE MANCC = '" + brand.getMaNCC()+"'";
+        String query = "DELETE FROM NHACUNGCAP WHERE MANCC = '" + brand.getMaNCC() + "'";
         db.execSQL(query);
         db.close();
-        Log.d(TAG,"Delete BRAND: ");
+        Log.d(TAG, "Delete BRAND: ");
     }
 
-    public void deleteBR(String brandName){
+    public void deleteBR(String brandName) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM NHACUNGCAP WHERE TENNCC = '" + brandName + "'";
         db.execSQL(query);
         db.close();
-        Log.d(TAG,"Delete BRAND with brandID: ");
+        Log.d(TAG, "Delete BRAND with brandID: ");
     }
 
-    public void loadBRList(ArrayList<NhaCungCap> brandList){
+    public void loadBRList(ArrayList<NhaCungCap> brandList) {
         brandList.clear();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -207,50 +255,228 @@ public class DBManager extends SQLiteOpenHelper {
                 brandList.add(brand);
             } while (cursor.moveToNext());
         }
-        Log.d(TAG,"Load BRAND: ");
+        Log.d(TAG, "Load BRAND: ");
     }
 
 
     //XE
-    public void insertXe() { }
-    public void updateXe() { }
-    public void loadXe() { }
-    public void deleteXe() { }
+    public void insertXe(Xe xe) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "INSERT INTO XE (MAXE,TENXE,SOLUONG,DONGIA,HANBAOHANH,HINHANH,MANCC) VALUES(" +
+                "'" + xe.getMaSP() + "'," + "'" + xe.getTenSP() + "'," + "'" + xe.getSoLuong() + "',"
+                + "'" + xe.getDonGia() + "'," + "'" + xe.getHanBH() + "',"
+                + "'" + xe.getHanBH() + "'," + "'" + xe.getTenNCC() + "'" + ")";
+        db.execSQL(sql);
+        db.execSQL(sql);
+
+    }
+
+    public List<Xe> loadDSXE() {
+
+
+        List<Xe> listX = new ArrayList<Xe>();
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM XE ", null);
+
+        if (c.moveToFirst()) {
+            Xe xe = new Xe();
+            int i = 0;
+            do {
+                xe = new Xe();
+                xe.setMaSP(c.getString(0));
+                xe.setTenSP(c.getString(1));
+                xe.setSoLuong(Integer.parseInt(c.getString(2)));
+                xe.setDonGia(Integer.parseInt(c.getString(3)));
+                xe.setHanBH(Integer.parseInt(c.getString(4)));
+                xe.setHinhAnh(Integer.parseInt(c.getString(5)));
+                xe.setTenNCC(c.getString(6));  //MANCC
+                listX.add(xe);
+
+            } while (c.moveToNext());
+
+        }
+        return listX;
+
+
+    }
+
+    public void updateSLXe(String maSP, int sL) {
+        String sql = "UPDATE XE SET SOLUONG =" +"'"+sL+"'" +
+                "WHERE MAXE="+"'"+maSP+"'";
+
+    }
+
+    public void loadXe() {
+    }
+
+    public void deleteXe() {
+    }
 
 
     //PHU TUNG
-    public void insertPT() { }
-    public void updatePT() { }
-    public void loadPT() { }
-    public void deletePT() { }
+    public void insertPT() {
+    }
+
+    public void updatePT() {
+    }
+
+    public void loadPT() {
+    }
+
+    public void deletePT() {
+    }
 
 
     //THONG SO XE
-    public void insertTSX() { }
-    public void updateTSX() { }
-    public void loadTSX() { }
-    public void deleteTSX() { }
+    public void insertTSX() {
+    }
+
+    public void updateTSX( ) {
+
+    }
+
+    public void loadTSX() {
+    }
+
+    public void deleteTSX() {
+    }
 
 
     //CHI TIET THONG SO XE
-    public void insertCTTSX() { }
-    public void updateCTTSX() { }
-    public void loadCTTSX() { }
-    public void deleteCTTSX() { }
+    public void insertCTTSX() {
+    }
+
+    public void updateCTTSX() {
+    }
+
+    public void loadCTTSX() {
+    }
+
+    public void deleteCTTSX() {
+    }
 
 
     //THONG SO PHU TUNG
-    public void insertTSPT() { }
-    public void updateTSPT() { }
-    public void loadTSPT() { }
-    public void deleteTSPT() { }
+    public void insertTSPT() {
+    }
+
+    public void updateTSPT() {
+    }
+
+    public void loadTSPT() {
+    }
+
+    public void deleteTSPT() {
+    }
 
 
     //DON HANG & CHI TIET DON HANG
+
+
+    public void insertDH(String maDDH, String nd, String cmnd, String maNV) {
+
+        String sqlDDH = "INSERT INTO DONDATHANG (MADH,NGAYDAT,CMND,MANV) VALUES(" +
+                "'" + maDDH + "'," + "'2021/10/5'," + "'" + cmnd + "'," + "'" + maNV + "')";
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(sqlDDH);
+        db.execSQL(sqlDDH);
+
+    }
+
+
+    public List<DonHang> loadDSDH() {
+
+
+        List<DonHang> listDh = new ArrayList<DonHang>();
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM DONDATHANG ", null);
+
+        if (c.moveToFirst()) {
+            DonHang ddh = new DonHang();
+            int i = 0;
+            do {
+                ddh = new DonHang();
+                ddh.setMaDH(c.getString(0));
+                ddh.setNgayDat(c.getString(1));
+                ddh.setCmnd(c.getString(2));
+                ddh.setTenNV(c.getString(3)); //manv
+                listDh.add(ddh);
+
+            } while (c.moveToNext());
+
+        }
+        return listDh;
+
+
+    }
+
+
+    //CHITIETDONDATXE
+
+
+    public void insertCTDDX(String maDDH, String maSP, String sl, String dgb) {
+
+        String sqlCTDDX = "INSERT INTO CHITIETDONDATXE(MADH,MAXE,SOLUONG,DONGIABAN) VALUES(" +
+                "'" + maDDH + "'," + "'" + maSP + "',"
+                + "'" + sl + "'," + "'" + dgb + "')";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sqlCTDDX);
+
+    }
+
+
+    public List<ChiTietSanPhamDonHang> loadDSDDX() {
+        List<ChiTietSanPhamDonHang> listDDX = new ArrayList<ChiTietSanPhamDonHang>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM CHITIETDONDATXE ", null);
+
+        if (c.moveToFirst()) {
+            ChiTietSanPhamDonHang cTDDX = new ChiTietSanPhamDonHang();
+            int i = 0;
+            do {
+                cTDDX = new ChiTietSanPhamDonHang();
+                cTDDX.setMaDH(c.getString(0));
+                cTDDX.setTenSP(c.getString(1)); //MAXE
+                cTDDX.setSoLuong(Integer.parseInt(c.getString(2)));
+                cTDDX.setDonGiaBan(Integer.parseInt(c.getString(3)));
+                listDDX.add(cTDDX);
+
+            } while (c.moveToNext());
+
+        }
+        return listDDX;
+
+    }
+
+
     //public void insertDH() { }      ->        public void insertCTDH() { }
-    public void loadDH() { }
+    public void loadDH() {
+    }
 
 
 //CAC PHAN CON LAI TUONG TU
+
+
+    ///////HAM TEST
+
+    public void testInsCTDDX() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlCTDDX = "INSERT INTO CHITIETDONDATXE(MADH,MAXE,SOLUONG,DONGIABAN) VALUES(" +
+                "'HD0','X003'," + 1 + "," + 22000000 + ")";
+        db.execSQL(sqlCTDDX);
+    }
+
+    public void testDltCTDDX() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "DELETE FROM CHITIETDONDATXE WHERE MADH='HD1'";
+        db.execSQL(sql);
+
+    }
 
 }
