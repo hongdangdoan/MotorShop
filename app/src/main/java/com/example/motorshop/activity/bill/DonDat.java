@@ -37,9 +37,14 @@ public class DonDat extends AppCompatActivity {
     String billType;
     String billM = "XE";
     String billA = "PT";
+    int count = 0;
+    int add = 0;
+
+    boolean oldCtm = false;
 
     List<Xe> dsXe = new ArrayList<Xe>();
     List<KhachHang> dsKH = new ArrayList<KhachHang>();
+    List<HangHoa> dsHH = new ArrayList<HangHoa>();
     DBManager dbR = new DBManager(this);
     int cart[] = new int[10];
     int cartIndex = 0;
@@ -64,7 +69,7 @@ public class DonDat extends AppCompatActivity {
 
         tbLayout = (TableLayout) findViewById(R.id.tblayoutBang);
 
-        btnCheck = (Button)findViewById(R.id.btnHoaDon_Check);
+        btnCheck = (Button) findViewById(R.id.btnHoaDon_Check);
         btnXong = (Button) findViewById(R.id.btnXong);
         btnCapNhat = (Button) findViewById(R.id.btnCapNhap);
 
@@ -93,9 +98,9 @@ public class DonDat extends AppCompatActivity {
 
                 Toast.makeText(DonDat.this, "Cap Nhat", Toast.LENGTH_SHORT).show();
                 addMotoToTable();
-                for (int i = 0; i < cartIndex; i++) {
-                    totalPrice += dsXe.get(cart[i]).getDonGia();
-                }
+//                for (int i = 0; i < cartIndex; i++) {
+//                    totalPrice += dsXe.get(cart[i]).getDonGia();
+//                }
 
             }
         });
@@ -108,7 +113,8 @@ public class DonDat extends AppCompatActivity {
                 String cmnd = edtCmnd.getText().toString();
                 String diaChi = edtDiaChi.getText().toString();
 
-                dbR.insertCTM(cmnd, hoTen, diaChi, "");
+                if (oldCtm == false) dbR.insertCTM(cmnd, hoTen, diaChi, "");
+
                 dbR.insertDH(maDDH, "", cmnd, maNV);
 
                 for (int i = 0; i < cartIndex; i++) {
@@ -153,7 +159,7 @@ public class DonDat extends AppCompatActivity {
         }
         if (listDDH.size() == 0) return -1;
         else {
-            String[] stt = listDDH.get(listDDH.size()-1).getMaDH().split("D");
+            String[] stt = listDDH.get(listDDH.size() - 1).getMaDH().split("D");
             return Integer.parseInt(stt[1].toString());
         }
     }
@@ -166,12 +172,12 @@ public class DonDat extends AppCompatActivity {
     }
 
     private void iniInfKH() {
-        System.out.println("kiem tra");
+
         String cmnd = edtCmnd.getText().toString();
         System.out.println(dsKH.size());
-        for(int i=0;i<dsKH.size();i++){
-            if(cmnd.equals(dsKH.get(i).getCmnd())){
-
+        for (int i = 0; i < dsKH.size(); i++) {
+            if (cmnd.equals(dsKH.get(i).getCmnd())) {
+                oldCtm = true;
                 edtHoTen.setText(dsKH.get(i).getHoTen());
                 edtDiaChi.setText(dsKH.get(i).getDiaChi());
             }
@@ -254,40 +260,74 @@ public class DonDat extends AppCompatActivity {
     }
 
     private void addMotoToTable() {
+
         Xe moto = new Xe();
         moto = getMotoFromActv();
+        HangHoa hangHoa = new HangHoa(moto.getMaSP(), moto.getTenSP(),
+                moto.getDonGia(), 1);
+        int cost = 0;
+        count++;
+        boolean addNew = true;
+        if (dsHH.size() <= 0) dsHH.add(hangHoa);
+        else {
 
-        TableRow tbRow = new TableRow(getApplicationContext());
-        TextView txtvCode = new TextView(getApplicationContext());
-        TextView txtvName = new TextView(getApplicationContext());
-        TextView txtvPrice = new TextView(getApplicationContext());
-        TextView txtvCount = new TextView(getApplicationContext());
+            for (int i = 0; i < dsHH.size(); i++) {
+                if (dsHH.get(i).getMaSP().equals(moto.getMaSP())) {
+                    dsHH.get(i).setSoLuong(dsHH.get(i).getSoLuong() + 1);
+                    addNew = false;
+
+                }
+
+            }
+            if (addNew) dsHH.add(hangHoa);
+        }
 
 
-        txtvCode.setText(moto.getMaSP());
-        txtvName.setText(moto.getTenSP());
-        txtvPrice.setText(String.valueOf(moto.getDonGia()));
-        txtvCount.setText("1");
+        for (int i = 0; i < dsHH.size(); i++) {
+
+            TableRow tbRow = new TableRow(getApplicationContext());
+            TextView txtvCode = new TextView(getApplicationContext());
+            TextView txtvName = new TextView(getApplicationContext());
+            TextView txtvPrice = new TextView(getApplicationContext());
+            TextView txtvCount = new TextView(getApplicationContext());
 
 
-        tbRow.addView(txtvCode, 0);
-        tbRow.addView(txtvName, 1);
-        tbRow.addView(txtvCount, 2);
-        tbRow.addView(txtvPrice, 3);
+            txtvCode.setText(dsHH.get(i).getMaSP());
+            txtvName.setText(dsHH.get(i).getTenSP());
+            txtvPrice.setText(String.valueOf(dsHH.get(i).getDonGia()));
+            txtvCount.setText(String.valueOf(dsHH.get(i).getSoLuong()));
 
 
-        tbLayout.addView(tbRow);
-        edtHoaDon_ThanhTien.setText(String.valueOf(moto.getDonGia()));
+            tbRow.addView(txtvCode, 0);
+            tbRow.addView(txtvName, 1);
+            tbRow.addView(txtvCount, 2);
+            tbRow.addView(txtvPrice, 3);
+            cost += dsHH.get(i).getDonGia() * dsHH.get(i).getSoLuong();
+
+
+            tbLayout.addView(tbRow, i + 1);
+
+        }
+
+        System.out.println(tbLayout.getChildCount());
+        if (tbLayout.getChildCount() > 2)
+            for (int i = dsHH.size() + 1; i < tbLayout.getChildCount(); i++) {
+                tbLayout.removeViewAt(i);
+            }
+
+        edtHoaDon_ThanhTien.setText(String.valueOf(cost));
 
     }
 
-    public void giamSLXe(String maSP){
-        for(int i=0;i<dsXe.size();i++){
-            if(dsXe.get(i).getMaSP().equals(maSP)){
-                System.out.println("test2");
-                dsXe.get(i).setSoLuong(dsXe.get(i).getSoLuong()-1);
-                dbR.updateSLXe(dsXe.get(i).getMaSP(),dsXe.get(i).getSoLuong()-1);
-                System.out.println(dsXe.get(i).getSoLuong()-1);
+    public void giamSLXe(String maSP) {
+
+
+        for (int i = 0; i < dsXe.size(); i++) {
+            if (dsXe.get(i).getMaSP().equals(maSP)) {
+
+                dsXe.get(i).setSoLuong(dsXe.get(i).getSoLuong() - 1);
+                dbR.updateSLXe(dsXe.get(i).getMaSP(), dsXe.get(i).getSoLuong());
+                System.out.println(dsXe.get(i).getSoLuong() - 1);
             }
         }
     }

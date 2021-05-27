@@ -268,7 +268,7 @@ public class DBManager extends SQLiteOpenHelper {
                 + "'" + xe.getDonGia() + "'," + "'" + xe.getHanBH() + "',"
                 + "'" + xe.getHanBH() + "'," + "'" + xe.getTenNCC() + "'" + ")";
         db.execSQL(sql);
-        db.execSQL(sql);
+
 
     }
 
@@ -306,6 +306,8 @@ public class DBManager extends SQLiteOpenHelper {
     public void updateSLXe(String maSP, int sL) {
         String sql = "UPDATE XE SET SOLUONG =" +"'"+sL+"'" +
                 "WHERE MAXE="+"'"+maSP+"'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sql);
 
     }
 
