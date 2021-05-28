@@ -1806,8 +1806,8 @@ id btnHDX
 id btnHoaDon_Check
 id btnInsertDP
 id btnInsertPD
+id btnLoc
 id btnLogin
-id btnSearch
 id btnSubmit
 id btnThemDD
 id btnUpdateBR

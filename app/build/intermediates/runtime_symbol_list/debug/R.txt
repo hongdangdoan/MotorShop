@@ -1805,8 +1805,8 @@ int id btnHDX 0x7f0801f2
 int id btnHoaDon_Check 0x7f0801f5
 int id btnInsertDP 0x7f08005e
 int id btnInsertPD 0x7f08005f
+int id btnLoc 0x7f0801f6
 int id btnLogin 0x7f080060
-int id btnSearch 0x7f0801d5
 int id btnSubmit 0x7f080061
 int id btnThemDD 0x7f0801ea
 int id btnUpdateBR 0x7f080062

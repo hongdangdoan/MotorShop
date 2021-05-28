@@ -33,10 +33,10 @@
             android:hint="@string/hintNhapMaDDH" />
 
         <Button
-            android:id="@+id/btnSearch"
+            android:id="@+id/btnLoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/iconbtnSearch" />
+            android:text="Lọc" />
 
     </LinearLayout>
 

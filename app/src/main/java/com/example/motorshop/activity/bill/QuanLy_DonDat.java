@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -21,11 +22,14 @@ import com.example.motorshop.datasrc.Xe;
 import com.example.motorshop.db.DBManager;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class QuanLy_DonDat extends AppCompatActivity {
 
-    Button btnThemDD,btnCTDD;
+    Button btnThemDD, btnCTDD, btnLoc;
+    CheckBox cbTTTang, cbTTGiam;
     TableLayout tableLayout;
 
     String billType;
@@ -33,6 +37,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
     String billA = "PT";
 
     List<Xe> dsXe = new ArrayList<Xe>();
+    List<HoaDon> dsHD = new ArrayList<HoaDon>();
     List<DonHang> dsDh = new ArrayList<DonHang>();
     List<KhachHang> dsKh = new ArrayList<KhachHang>();
     List<ChiTietSanPhamDonHang> dsDDX = new ArrayList<ChiTietSanPhamDonHang>();
@@ -64,47 +69,126 @@ public class QuanLy_DonDat extends AppCompatActivity {
         setEven();
     }
 
-    private void setControl(){
+    private void setControl() {
 
-        btnThemDD = (Button)findViewById(R.id.btnThemDD);
-        btnCTDD = (Button)findViewById(R.id.btnCTDD);
-        tableLayout = (TableLayout)findViewById(R.id.tblayoutBang);
+        btnThemDD = (Button) findViewById(R.id.btnThemDD);
+        btnCTDD = (Button) findViewById(R.id.btnCTDD);
+        btnLoc = (Button)findViewById(R.id.btnLoc);
+        tableLayout = (TableLayout) findViewById(R.id.tblayoutBang);
+        cbTTTang = (CheckBox) findViewById(R.id.chbTongTienTangDan);
+        cbTTGiam = (CheckBox) findViewById(R.id.chbTongTienGiamDan);
     }
 
     private void setEven() {
 
+        btnLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cbTTTang.isChecked()){
+                    sXTienTang();
+                    for(int i=tableLayout.getChildCount()-1;i>0;i--){
+                        tableLayout.removeViewAt(i);
+                    }
+                    showDDXList();
+                    System.out.println("Sap xep tang dan");
+                }
+
+                if(cbTTGiam.isChecked()){
+                    sXTienGiam();
+                    for(int i=tableLayout.getChildCount()-1;i>0;i--){
+                        tableLayout.removeViewAt(i);
+                    }
+                    showDDXList();
+                    System.out.println("Sap xep giam dan");
+                }
+
+            }
+        });
 
         btnThemDD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuanLy_DonDat.this,DonDat.class);
-                intent.putExtra("loai_DD",billType);
+                Intent intent = new Intent(QuanLy_DonDat.this, DonDat.class);
+                intent.putExtra("loai_DD", billType);
                 startActivity(intent);
             }
         });
     }
 
-    public void init_DonDat(String billType){
+    public void sXTienTang() {
 
-        if(billType.equals(billM))init_DonDat_Xe();
-        if(billType.equals(billA))init_DonDat_PT();
+        int n = dsHD.size();
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++)
+                if (dsHD.get(j).getTongTien() > dsHD.get(j + 1).getTongTien()) {
+                    // swap arr[j+1] và arr[i]
+                    HoaDon temp = dsHD.get(j);
+                    dsHD.get(j).setMaHD(dsHD.get(j + 1).getMaHD());
+                    dsHD.get(j).setTongTien(dsHD.get(j + 1).getTongTien());
+                    dsHD.get(j + 1).setMaHD(temp.getMaHD());
+                    dsHD.get(j + 1).setTongTien(temp.getTongTien());
+                }
     }
 
-    public void init_DonDat_Xe(){
+    public void sXTienGiam() {
+
+        int n = dsHD.size();
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++)
+                if (dsHD.get(j).getTongTien() < dsHD.get(j + 1).getTongTien()) {
+                    // swap arr[j+1] và arr[i]
+                    HoaDon temp = dsHD.get(j);
+                    dsHD.get(j).setMaHD(dsHD.get(j + 1).getMaHD());
+                    dsHD.get(j).setTongTien(dsHD.get(j + 1).getTongTien());
+                    dsHD.get(j + 1).setMaHD(temp.getMaHD());
+                    dsHD.get(j + 1).setTongTien(temp.getTongTien());
+                }
+    }
+
+    public void init_DonDat(String billType) {
+
+        if (billType.equals(billM)) init_DonDat_Xe();
+        if (billType.equals(billA)) init_DonDat_PT();
+    }
+
+    public void init_DonDat_Xe() {
 
 
         dsDh = dbR.loadDSDH();
         dsKh = dbR.loadDsKH();
         dsDDX = dbR.loadDSDDX();
         addInfoToDDX();
+        initDSHD();
+
 
         btnThemDD.setText("Thêm DDX");
         btnCTDD.setText("CT DDX");
 
     }
 
-    public void addInfoToDDX(){
-        for(int i=0;i<dsDDX.size();i++){
+    public void initDSHD() {
+        int index = 0;
+        for (int i = 0; i < dsDDX.size(); i++) {
+            if (index == 0) {
+                dsHD.add(new HoaDon(dsDDX.get(i).getMaDH(),
+                        tongTienMotHD(dsDDX.get(i).getMaDH())));
+
+
+            } else {
+                if (!(dsHD.get(index).equals(dsDDX.get(i).getMaDH()))) {
+                    index++;
+                    dsHD.add(new HoaDon(dsDDX.get(i).getMaDH(),
+                            tongTienMotHD(dsDDX.get(i).getMaDH())));
+
+
+                }
+            }
+
+        }
+    }
+
+    public void addInfoToDDX() {
+        for (int i = 0; i < dsDDX.size(); i++) {
             dsDDX.get(i).setCmnd(findDHByMADH(dsDDX.get(i).getMaDH()).getCmnd());
             dsDDX.get(i).setNgayDat(findDHByMADH(dsDDX.get(i).getMaDH()).getNgayDat());
             dsDDX.get(i).setTenNV(findDHByMADH(dsDDX.get(i).getMaDH()).getTenNV());
@@ -113,21 +197,20 @@ public class QuanLy_DonDat extends AppCompatActivity {
     }
 
 
-
-    public void init_DonDat_PT(){
+    public void init_DonDat_PT() {
 
         btnThemDD.setText("Thêm DDPT");
         btnCTDD.setText("CT DDPT");
 
     }
 
-    private KhachHang findKHByCMND(String cmnd){
-        if(dsKh.size()==0){
+    private KhachHang findKHByCMND(String cmnd) {
+        if (dsKh.size() == 0) {
 
             return null;
-        }else{
-            for(int i=0;i<dsKh.size();i++){
-                if(dsKh.get(i).getCmnd().equals(cmnd)){
+        } else {
+            for (int i = 0; i < dsKh.size(); i++) {
+                if (dsKh.get(i).getCmnd().equals(cmnd)) {
                     return dsKh.get(i);
                 }
             }
@@ -138,13 +221,13 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     }
 
-    private DonHang findDHByMADH(String maDH){
-        if(dsDh.size()==0){
+    private DonHang findDHByMADH(String maDH) {
+        if (dsDh.size() == 0) {
 
             return null;
-        }else{
-            for(int i=0;i<dsDh.size();i++){
-                if(dsDh.get(i).getMaDH().equals(maDH)){
+        } else {
+            for (int i = 0; i < dsDh.size(); i++) {
+                if (dsDh.get(i).getMaDH().equals(maDH)) {
                     return dsDh.get(i);
                 }
             }
@@ -155,36 +238,54 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     }
 
-    private void showDDXList(){
+    private void showDDXList() {
 
 
         TableRow tbRow = null;
 
-        for(int i=0;i<dsDDX.size();i++){
+        for (int i = 0; i < dsHD.size(); i++) {
 
-            String maHD = dsDDX.get(i).getMaDH();
+            String maHD = dsHD.get(i).getMaHD();
+
             TextView txtMa = new TextView(getApplicationContext());
             txtMa.setText(maHD);
             TextView txtND = new TextView(getApplicationContext());
-            txtND.setText(dsDDX.get(i).getNgayDat());
             TextView txtHoTen = new TextView(getApplicationContext());
+            txtND.setText(dsDDX.get(i).getNgayDat());
 
+            for (int j = 0; j < dsDDX.size(); j++) {
+                if (dsDDX.get(j).getMaDH().equals(maHD)) {
+                    txtND.setText(dsDDX.get(j).getNgayDat());
+                    txtHoTen.setText(findKHByCMND(dsDDX.get(j).getCmnd()).getHoTen());
+                    break;
+                }
+            }
 
-            txtHoTen.setText(findKHByCMND(dsDDX.get(i).getCmnd()).getHoTen());
             TextView txtTongTien = new TextView(getApplicationContext());
 
-            txtTongTien.setText(String.valueOf(dsDDX.get(i).getSoLuong()*dsDDX.get(i).getDonGiaBan()));
+            txtTongTien.setText(String.valueOf(dsHD.get(i).getTongTien()));
             tbRow = new TableRow(getApplicationContext());
-            tbRow.addView(txtMa,0);
-            tbRow.addView(txtND,1);
-            tbRow.addView(txtHoTen,2);
+            tbRow.addView(txtMa, 0);
+            tbRow.addView(txtND, 1);
+            tbRow.addView(txtHoTen, 2);
             tbRow.addView(txtTongTien);
             tableLayout.addView(tbRow);
 
         }
     }
 
-    public void testInsertDBXE(){
+    public int tongTienMotHD(String maHD) {
+        int tongTien = 0;
+        for (int i = 0; i < dsDDX.size(); i++) {
+            if (dsDDX.get(i).getMaDH().equals(maHD)) {
+                tongTien += dsDDX.get(i).getDonGiaBan() * dsDDX.get(i).getSoLuong();
+            }
+
+        }
+        return tongTien;
+    }
+
+    public void testInsertDBXE() {
         Xe xe = new Xe();
         xe.setMaSP("X003");
         xe.setTenSP("Grande");
@@ -197,7 +298,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
         db.insertXe(xe);
     }
 
-    public void testInsertDBNCC(){
+    public void testInsertDBNCC() {
         NhaCungCap ncc = new NhaCungCap();
         ncc.setMaNCC("HO");
         ncc.setTenNCC("Honda");
@@ -207,14 +308,15 @@ public class QuanLy_DonDat extends AppCompatActivity {
         ncc.setLogo(1);
     }
 
-    public List<Xe> loadDSXeFromDB(){
+    public List<Xe> loadDSXeFromDB() {
 
         List<Xe> dsXe = new ArrayList<Xe>();
         SQLiteDatabase db = new DBManager(getApplicationContext()).getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM XE ", null);
 
         if (c.moveToFirst()) {
-            Xe moto = new Xe();int i=0;
+            Xe moto = new Xe();
+            int i = 0;
             do {
                 moto = new Xe();
                 moto.setMaSP(c.getString(0));
@@ -232,26 +334,26 @@ public class QuanLy_DonDat extends AppCompatActivity {
     }
 
 
-    public void testShowKH(){
-        for(int i=0;i<dsKh.size();i++){
+    public void testShowKH() {
+        for (int i = 0; i < dsKh.size(); i++) {
             System.out.println("here");
             System.out.println(dsKh.get(i).getCmnd());
         }
     }
 
-    public void testShowDDX(){
+    public void testShowDDX() {
         System.out.println("show ddx");
         System.out.println(dsDDX.size());
-        for(int i=0;i<dsDDX.size();i++){
+        for (int i = 0; i < dsDDX.size(); i++) {
 
             System.out.println(dsDDX.get(i).getTenSP());
         }
     }
 
-    public void testShowDDH(){
+    public void testShowDDH() {
         System.out.println("show ddh");
         System.out.println(dsDh.size());
-        for(int i=0;i<dsDh.size();i++){
+        for (int i = 0; i < dsDh.size(); i++) {
 
             System.out.println(dsDh.get(i).getCmnd());
         }

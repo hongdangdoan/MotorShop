@@ -4,16 +4,16 @@
         "source": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\src\\main\\res\\menu\\menu_product.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_quan_ly_don_dat.xml.flat",
-        "source": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\src\\main\\res\\layout\\activity_quan_ly_don_dat.xml"
+        "merged": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\layout_menu_dd.xml.flat",
+        "source": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\src\\main\\res\\layout\\menu_dd.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_department.xml.flat",
         "source": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\src\\main\\res\\layout\\activity_department.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\layout_menu_dd.xml.flat",
-        "source": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\src\\main\\res\\layout\\menu_dd.xml"
+        "merged": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_quan_ly_don_dat.xml.flat",
+        "source": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\src\\main\\res\\layout\\activity_quan_ly_don_dat.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\Desktop\\Test\\MotorShop\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_options.png.flat",

@@ -119,9 +119,9 @@ public class DonDat extends AppCompatActivity {
 
                 for (int i = 0; i < cartIndex; i++) {
                     int sl = 1;
-                    dbR.insertCTDDX(maDDH, dsXe.get(cart[i]).getMaSP(),
-                            String.valueOf(sl), String.valueOf(dsXe.get(cart[i]).getDonGia()));
-                    giamSLXe(dsXe.get(cart[i]).getMaSP());
+                    dbR.insertCTDDX(maDDH, dsHH.get(i).getMaSP(),
+                            String.valueOf(sl), String.valueOf(dsHH.get(i).getDonGia()));
+                    giamSLXe(dsHH.get(i).getMaSP());
 
                 }
 
