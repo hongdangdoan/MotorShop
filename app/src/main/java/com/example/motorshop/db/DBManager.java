@@ -13,6 +13,7 @@ import com.example.motorshop.datasrc.DonHang;
 import com.example.motorshop.datasrc.KhachHang;
 import com.example.motorshop.datasrc.NhaCungCap;
 import com.example.motorshop.datasrc.NhanVien;
+import com.example.motorshop.datasrc.PhuTung;
 import com.example.motorshop.datasrc.Xe;
 
 import java.util.ArrayList;
@@ -319,7 +320,60 @@ public class DBManager extends SQLiteOpenHelper {
 
 
     //PHU TUNG
-    public void insertPT() {
+
+
+    public void insertPT(PhuTung pt) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "INSERT INTO PHUTUNG (MAPT,TENPT,SOLUONG,DONGIA,HANBAOHANH,HINHANH,MANCC) VALUES(" +
+                "'" + pt.getMaSP() + "'," + "'" + pt.getTenSP() + "'," + "'" + pt.getSoLuong() + "',"
+                + "'" + pt.getDonGia() + "'," + "'" + pt.getHanBH() + "',"
+                + "'" + pt.getHanBH() + "'," + "'" + pt.getTenNCC() + "'" + ")";
+        db.execSQL(sql);
+
+
+    }
+
+
+    public void updateSLPT(String maSP, int sL) {
+        String sql = "UPDATE PHUTUNG SET SOLUONG =" +"'"+sL+"'" +
+                "WHERE MAPT="+"'"+maSP+"'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sql);
+
+    }
+
+    public List<PhuTung> loadDSPT() {
+
+
+        List<PhuTung> listP = new ArrayList<PhuTung>();
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM PHUTUNG ", null);
+
+        if (c.moveToFirst()) {
+            PhuTung pt = new PhuTung();
+            int i = 0;
+            do {
+                pt = new PhuTung();
+                pt.setMaSP(c.getString(0));
+                pt.setTenSP(c.getString(1));
+                pt.setSoLuong(Integer.parseInt(c.getString(2)));
+                pt.setDonGia(Integer.parseInt(c.getString(3)));
+                pt.setHanBH(Integer.parseInt(c.getString(4)));
+                pt.setHinhAnh(Integer.parseInt(c.getString(5)));
+                pt.setTenNCC(c.getString(6));  //MANCC
+                listP.add(pt);
+
+            } while (c.moveToNext());
+
+        }
+        return listP;
+    }
+
+
+        public void insertPT() {
     }
 
     public void updatePT() {
@@ -459,6 +513,42 @@ public class DBManager extends SQLiteOpenHelper {
 
     //public void insertDH() { }      ->        public void insertCTDH() { }
     public void loadDH() {
+    }
+
+
+    //CHITIETDONDATPHUTUNG
+    public List<ChiTietSanPhamDonHang> loadDSDDPT() {
+        List<ChiTietSanPhamDonHang> listDDX = new ArrayList<ChiTietSanPhamDonHang>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM CHITIETDONDATPHUTUNG ", null);
+
+        if (c.moveToFirst()) {
+            ChiTietSanPhamDonHang cTDDX = new ChiTietSanPhamDonHang();
+            int i = 0;
+            do {
+                cTDDX = new ChiTietSanPhamDonHang();
+                cTDDX.setMaDH(c.getString(0));
+                cTDDX.setTenSP(c.getString(1)); //MAXE
+                cTDDX.setSoLuong(Integer.parseInt(c.getString(2)));
+                cTDDX.setDonGiaBan(Integer.parseInt(c.getString(3)));
+                listDDX.add(cTDDX);
+
+            } while (c.moveToNext());
+
+        }
+        return listDDX;
+
+    }
+
+    public void insertCTDDPT(String maDDH, String maSP, String sl, String dgb) {
+
+        String sqlCTDDX = "INSERT INTO CHITIETDONDATPHUTUNG(MADH,MAPT,SOLUONG,DONGIABAN) VALUES(" +
+                "'" + maDDH + "'," + "'" + maSP + "',"
+                + "'" + sl + "'," + "'" + dgb + "')";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sqlCTDDX);
+
     }
 
 

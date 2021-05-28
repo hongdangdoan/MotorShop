@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.motorshop.activity.R;
 import com.example.motorshop.datasrc.DonHang;
 import com.example.motorshop.datasrc.KhachHang;
+import com.example.motorshop.datasrc.PhuTung;
 import com.example.motorshop.datasrc.Xe;
 import com.example.motorshop.db.DBManager;
 
@@ -43,6 +44,7 @@ public class DonDat extends AppCompatActivity {
     boolean oldCtm = false;
 
     List<Xe> dsXe = new ArrayList<Xe>();
+    List<PhuTung> dsPT = new ArrayList<PhuTung>();
     List<KhachHang> dsKH = new ArrayList<KhachHang>();
     List<HangHoa> dsHH = new ArrayList<HangHoa>();
     DBManager dbR = new DBManager(this);
@@ -57,7 +59,7 @@ public class DonDat extends AppCompatActivity {
         Intent inten = getIntent();
         billType = inten.getStringExtra("loai_DD");
         init_DonDat(billType);
-        showMotoList();
+        showProductList();
         initDDH();
         setEvent();
     }
@@ -105,6 +107,7 @@ public class DonDat extends AppCompatActivity {
         btnXong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String maNV = "NV01";
                 String maDDH = edtMaDDH.getText().toString();
                 String hoTen = edtHoTen.getText().toString();
@@ -115,13 +118,25 @@ public class DonDat extends AppCompatActivity {
 
                 dbR.insertDH(maDDH, "", cmnd, maNV);
 
-                for (int i = 0; i < dsHH.size(); i++) {
-                    int sl = dsHH.get(i).getSoLuong();
-                    dbR.insertCTDDX(maDDH, dsHH.get(i).getMaSP(),
-                            String.valueOf(sl), String.valueOf(dsHH.get(i).getDonGia()));
-                    giamSLXe(dsHH.get(i).getMaSP());
+                if(billType.equals(billM)){
+                    for (int i = 0; i < dsHH.size(); i++) {
+                        int sl = dsHH.get(i).getSoLuong();
+                        dbR.insertCTDDX(maDDH, dsHH.get(i).getMaSP(),
+                                String.valueOf(sl), String.valueOf(dsHH.get(i).getDonGia()));
+                        giamSLXe(dsHH.get(i).getMaSP());
 
+                    }
                 }
+                if(billType.equals(billA)){
+                    for (int i = 0; i < dsHH.size(); i++) {
+                        int sl = dsHH.get(i).getSoLuong();
+                        dbR.insertCTDDPT(maDDH, dsHH.get(i).getMaSP(),
+                                String.valueOf(sl), String.valueOf(dsHH.get(i).getDonGia()));
+                        giamSLPT(dsHH.get(i).getMaSP());
+
+                    }
+                }
+
 
                 Toast.makeText(DonDat.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
             }
@@ -194,6 +209,7 @@ public class DonDat extends AppCompatActivity {
 
     public void init_DonDat_PT() {
 
+        dsPT = dbR.loadDSPT();
         txtViewMaSP.setText("Mã phụ tùng");
         txtViewTenSP.setText("Tên phụ tùng");
         atcpChonSP.setHint("Chọn phụ tùng");
@@ -214,9 +230,6 @@ public class DonDat extends AppCompatActivity {
                 moto.setMaSP(c.getString(0));
                 moto.setTenNCC(c.getString(6));
                 moto.setTenSP(c.getString(1));
-                System.out.println("here");
-                System.out.println(moto.getMaSP());
-                System.out.println(moto.getTenSP());
                 dsXe.add(moto);
 
             } while (c.moveToNext());
@@ -225,23 +238,67 @@ public class DonDat extends AppCompatActivity {
         return dsXe;
     }
 
-    private void showMotoList() {
+    public List<Xe> loadDSPTFromDB() {
 
+        List<Xe> dsXe = new ArrayList<Xe>();
+        SQLiteDatabase db = new DBManager(getApplicationContext()).getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM PHUTUNG ", null);
 
-        String arr[] = new String[dsXe.size()];
-        for (int i = 0; i < dsXe.size(); i++) {
+        if (c.moveToFirst()) {
+            PhuTung pt = new PhuTung();
+            int i = 0;
+            do {
+                pt = new PhuTung();
+                pt.setMaSP(c.getString(0));
+                pt.setTenNCC(c.getString(6));
+                pt.setTenSP(c.getString(1));
+                dsPT.add(pt);
 
-            arr[i] = dsXe.get(i).getTenSP();
+            } while (c.moveToNext());
 
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_item, R.id.textView_listItem, arr);
+        return dsXe;
+    }
 
-        atcpChonSP.setAdapter(adapter);
-        atcpChonSP.setThreshold(1);
+
+    private void showProductList() {
+
+
+        if(billType.equals(billM)){
+            String arr[] = new String[dsXe.size()];
+            for (int i = 0; i < dsXe.size(); i++) {
+
+                arr[i] = dsXe.get(i).getTenSP();
+
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_item, R.id.textView_listItem, arr);
+
+            atcpChonSP.setAdapter(adapter);
+            atcpChonSP.setThreshold(1);
+        }
+        if(billType.equals(billA)) {
+            String arr[] = new String[dsPT.size()];
+            for (int i = 0; i < dsPT.size(); i++) {
+
+                arr[i] = dsPT.get(i).getTenSP();
+
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_item, R.id.textView_listItem, arr);
+
+            atcpChonSP.setAdapter(adapter);
+            atcpChonSP.setThreshold(1);
+        }
+
+
+
+
+
+
     }
 
     private Xe getMotoFromActv() {
         String name = atcpChonSP.getText().toString();
+
 
         for (int i = 0; i < dsXe.size(); i++) {
             if (dsXe.get(i).getTenSP().equals(name)) {
@@ -257,68 +314,147 @@ public class DonDat extends AppCompatActivity {
 
     }
 
+    private PhuTung getPTFromActv() {
+        String name = atcpChonSP.getText().toString();
+
+
+        for (int i = 0; i < dsPT.size(); i++) {
+            if (dsPT.get(i).getTenSP().equals(name)) {
+                cart[cartIndex] = i;
+                cartIndex++;
+                System.out.println("chon phu tung");
+                System.out.println(dsPT.get(i).getDonGia());
+                return dsPT.get(i);
+            }
+        }
+        return null;
+
+
+    }
+
     private void addMotoToTable() {
 
-        Xe moto = new Xe();
-        moto = getMotoFromActv();
-        HangHoa hangHoa = new HangHoa(moto.getMaSP(), moto.getTenSP(),
-                moto.getDonGia(), 1);
-        int cost = 0;
-        count++;
-        boolean addNew = true;
-        if (dsHH.size() <= 0) dsHH.add(hangHoa);
-        else {
+        if(billType.equals(billM)){
 
-            for (int i = 0; i < dsHH.size(); i++) {
-                if (dsHH.get(i).getMaSP().equals(moto.getMaSP())) {
-                    dsHH.get(i).setSoLuong(dsHH.get(i).getSoLuong() + 1);
-                    addNew = false;
+            Xe moto = new Xe();
+            moto = getMotoFromActv();
+            HangHoa hangHoa = new HangHoa(moto.getMaSP(), moto.getTenSP(),
+                    moto.getDonGia(), 1);
+            int cost = 0;
+            count++;
+            boolean addNew = true;
+            if (dsHH.size() <= 0) dsHH.add(hangHoa);
+            else {
+
+                for (int i = 0; i < dsHH.size(); i++) {
+                    if (dsHH.get(i).getMaSP().equals(moto.getMaSP())) {
+                        dsHH.get(i).setSoLuong(dsHH.get(i).getSoLuong() + 1);
+                        addNew = false;
+
+                    }
 
                 }
-
-            }
-            if (addNew) dsHH.add(hangHoa);
-        }
-
-
-        for (int i = 0; i < dsHH.size(); i++) {
-
-            TableRow tbRow = new TableRow(getApplicationContext());
-            TextView txtvCode = new TextView(getApplicationContext());
-            TextView txtvName = new TextView(getApplicationContext());
-            TextView txtvPrice = new TextView(getApplicationContext());
-            TextView txtvCount = new TextView(getApplicationContext());
-
-
-            txtvCode.setText(dsHH.get(i).getMaSP());
-            txtvName.setText(dsHH.get(i).getTenSP());
-            txtvPrice.setText(String.valueOf(dsHH.get(i).getDonGia()));
-            txtvCount.setText(String.valueOf(dsHH.get(i).getSoLuong()));
-
-
-            tbRow.addView(txtvCode, 0);
-            tbRow.addView(txtvName, 1);
-            tbRow.addView(txtvCount, 2);
-            tbRow.addView(txtvPrice, 3);
-            cost += dsHH.get(i).getDonGia() * dsHH.get(i).getSoLuong();
-
-
-            tbLayout.addView(tbRow, i + 1);
-
-        }
-
-        System.out.println(tbLayout.getChildCount());
-        if (tbLayout.getChildCount() > 2)
-            for (int i = tbLayout.getChildCount()-1; i> dsHH.size(); i--) {
-                tbLayout.removeViewAt(i);
+                if (addNew) dsHH.add(hangHoa);
             }
 
-        edtHoaDon_ThanhTien.setText(String.valueOf(cost));
+
+            for (int i = 0; i < dsHH.size(); i++) {
+
+                TableRow tbRow = new TableRow(getApplicationContext());
+                TextView txtvCode = new TextView(getApplicationContext());
+                TextView txtvName = new TextView(getApplicationContext());
+                TextView txtvPrice = new TextView(getApplicationContext());
+                TextView txtvCount = new TextView(getApplicationContext());
+
+
+                txtvCode.setText(dsHH.get(i).getMaSP());
+                txtvName.setText(dsHH.get(i).getTenSP());
+                txtvPrice.setText(String.valueOf(dsHH.get(i).getDonGia()));
+                txtvCount.setText(String.valueOf(dsHH.get(i).getSoLuong()));
+
+
+                tbRow.addView(txtvCode, 0);
+                tbRow.addView(txtvName, 1);
+                tbRow.addView(txtvCount, 2);
+                tbRow.addView(txtvPrice, 3);
+                cost += dsHH.get(i).getDonGia() * dsHH.get(i).getSoLuong();
+
+
+                tbLayout.addView(tbRow, i + 1);
+
+            }
+
+            System.out.println(tbLayout.getChildCount());
+            if (tbLayout.getChildCount() > 2)
+                for (int i = tbLayout.getChildCount()-1; i> dsHH.size(); i--) {
+                    tbLayout.removeViewAt(i);
+                }
+
+            edtHoaDon_ThanhTien.setText(String.valueOf(cost));
+
+        }if(billType.equals(billA)){
+            PhuTung pt = new PhuTung();
+            pt = getPTFromActv();
+            HangHoa hangHoa = new HangHoa(pt.getMaSP(), pt.getTenSP(),
+                    pt.getDonGia(), 1);
+            int cost = 0;
+            count++;
+            boolean addNew = true;
+            if (dsHH.size() <= 0) dsHH.add(hangHoa);
+            else {
+
+                for (int i = 0; i < dsHH.size(); i++) {
+                    if (dsHH.get(i).getMaSP().equals(pt.getMaSP())) {
+                        dsHH.get(i).setSoLuong(dsHH.get(i).getSoLuong() + 1);
+                        addNew = false;
+
+                    }
+
+                }
+                if (addNew) dsHH.add(hangHoa);
+            }
+
+
+            for (int i = 0; i < dsHH.size(); i++) {
+
+                TableRow tbRow = new TableRow(getApplicationContext());
+                TextView txtvCode = new TextView(getApplicationContext());
+                TextView txtvName = new TextView(getApplicationContext());
+                TextView txtvPrice = new TextView(getApplicationContext());
+                TextView txtvCount = new TextView(getApplicationContext());
+
+
+                txtvCode.setText(dsHH.get(i).getMaSP());
+                txtvName.setText(dsHH.get(i).getTenSP());
+                txtvPrice.setText(String.valueOf(dsHH.get(i).getDonGia()));
+                txtvCount.setText(String.valueOf(dsHH.get(i).getSoLuong()));
+
+
+                tbRow.addView(txtvCode, 0);
+                tbRow.addView(txtvName, 1);
+                tbRow.addView(txtvCount, 2);
+                tbRow.addView(txtvPrice, 3);
+                cost += dsHH.get(i).getDonGia() * dsHH.get(i).getSoLuong();
+
+
+                tbLayout.addView(tbRow, i + 1);
+
+            }
+
+            System.out.println(tbLayout.getChildCount());
+            if (tbLayout.getChildCount() > 2)
+                for (int i = tbLayout.getChildCount()-1; i> dsHH.size(); i--) {
+                    tbLayout.removeViewAt(i);
+                }
+
+            edtHoaDon_ThanhTien.setText(String.valueOf(cost));
+
+        }
+
 
     }
 
     public void giamSLXe(String maSP) {
-
 
         for (int i = 0; i < dsXe.size(); i++) {
             if (dsXe.get(i).getMaSP().equals(maSP)) {
@@ -326,6 +462,18 @@ public class DonDat extends AppCompatActivity {
                 dsXe.get(i).setSoLuong(dsXe.get(i).getSoLuong() - 1);
                 dbR.updateSLXe(dsXe.get(i).getMaSP(), dsXe.get(i).getSoLuong());
                 System.out.println(dsXe.get(i).getSoLuong() - 1);
+            }
+        }
+    }
+
+    public void giamSLPT(String maSP) {
+
+        for (int i = 0; i < dsPT.size(); i++) {
+            if (dsPT.get(i).getMaSP().equals(maSP)) {
+
+                dsPT.get(i).setSoLuong(dsPT.get(i).getSoLuong() - 1);
+                dbR.updateSLPT(dsPT.get(i).getMaSP(), dsPT.get(i).getSoLuong());
+                System.out.println(dsPT.get(i).getSoLuong() - 1);
             }
         }
     }

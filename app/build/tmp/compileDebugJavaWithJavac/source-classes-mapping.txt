@@ -1,9 +1,7 @@
-com/example/motorshop/activity/brand/BrandActivity.java
- com.example.motorshop.activity.brand.BrandActivity
- com.example.motorshop.activity.brand.BrandActivity$1
- com.example.motorshop.activity.brand.BrandActivity$2
- com.example.motorshop.activity.brand.BrandActivity$2$1
- com.example.motorshop.activity.brand.BrandActivity$2$2
+com/example/motorshop/activity/brand/BrandAdapter.java
+ com.example.motorshop.activity.brand.BrandAdapter
+ com.example.motorshop.activity.brand.BrandAdapter$1
+ com.example.motorshop.activity.brand.BrandAdapter$2
 com/example/motorshop/activity/bill/HoaDon.java
  com.example.motorshop.activity.bill.HoaDon
 com/example/motorshop/datasrc/MainItem.java
@@ -19,11 +17,8 @@ com/example/motorshop/datasrc/KhachHang.java
  com.example.motorshop.datasrc.KhachHang
 com/example/motorshop/datasrc/ChiTietDonHang.java
  com.example.motorshop.datasrc.ChiTietDonHang
-com/example/motorshop/activity/department/DepartmentActivity.java
- com.example.motorshop.activity.department.DepartmentActivity
- com.example.motorshop.activity.department.DepartmentActivity$1
- com.example.motorshop.activity.department.DepartmentActivity$2
- com.example.motorshop.activity.department.DepartmentActivity$3
+com/example/motorshop/datasrc/ThongSoXe.java
+ com.example.motorshop.datasrc.ThongSoXe
 com/example/motorshop/activity/BuildConfig.java
  com.example.motorshop.activity.BuildConfig
 com/example/motorshop/activity/product/ProductActivity.java
@@ -45,19 +40,16 @@ com/example/motorshop/datasrc/BaoHanh.java
  com.example.motorshop.datasrc.BaoHanh
 com/example/motorshop/datasrc/ThongSoPhuTung.java
  com.example.motorshop.datasrc.ThongSoPhuTung
-com/example/motorshop/activity/bill/DonDat.java
- com.example.motorshop.activity.bill.DonDat
- com.example.motorshop.activity.bill.DonDat$1
- com.example.motorshop.activity.bill.DonDat$2
- com.example.motorshop.activity.bill.DonDat$3
+com/example/motorshop/helper/Regex.java
+ com.example.motorshop.helper.Regex
 com/example/motorshop/datasrc/NhaCungCap.java
  com.example.motorshop.datasrc.NhaCungCap
 com/example/motorshop/datasrc/SanPham.java
  com.example.motorshop.datasrc.SanPham
 com/example/motorshop/datasrc/PhuTung.java
  com.example.motorshop.datasrc.PhuTung
-com/example/motorshop/db/DBManager.java
- com.example.motorshop.db.DBManager
+com/example/motorshop/activity/main/MainAdapter.java
+ com.example.motorshop.activity.main.MainAdapter
 com/example/motorshop/datasrc/ChiTietSanPhamDonHang.java
  com.example.motorshop.datasrc.ChiTietSanPhamDonHang
 com/example/motorshop/activity/bill/HangHoa.java
@@ -70,18 +62,26 @@ com/example/motorshop/datasrc/DanhSachSanPhamBaoHanh.java
  com.example.motorshop.datasrc.DanhSachSanPhamBaoHanh
 com/example/motorshop/datasrc/DonHang.java
  com.example.motorshop.datasrc.DonHang
-com/example/motorshop/datasrc/ThongSoXe.java
- com.example.motorshop.datasrc.ThongSoXe
-com/example/motorshop/activity/brand/BrandAdapter.java
- com.example.motorshop.activity.brand.BrandAdapter
- com.example.motorshop.activity.brand.BrandAdapter$1
- com.example.motorshop.activity.brand.BrandAdapter$2
-com/example/motorshop/activity/main/MainAdapter.java
- com.example.motorshop.activity.main.MainAdapter
 com/example/motorshop/activity/login/LoginActivity.java
  com.example.motorshop.activity.login.LoginActivity
-com/example/motorshop/helper/Regex.java
- com.example.motorshop.helper.Regex
+com/example/motorshop/activity/department/DepartmentActivity.java
+ com.example.motorshop.activity.department.DepartmentActivity
+ com.example.motorshop.activity.department.DepartmentActivity$1
+ com.example.motorshop.activity.department.DepartmentActivity$2
+ com.example.motorshop.activity.department.DepartmentActivity$3
+com/example/motorshop/activity/brand/BrandActivity.java
+ com.example.motorshop.activity.brand.BrandActivity
+ com.example.motorshop.activity.brand.BrandActivity$1
+ com.example.motorshop.activity.brand.BrandActivity$2
+ com.example.motorshop.activity.brand.BrandActivity$2$1
+ com.example.motorshop.activity.brand.BrandActivity$2$2
+com/example/motorshop/activity/bill/DonDat.java
+ com.example.motorshop.activity.bill.DonDat
+ com.example.motorshop.activity.bill.DonDat$1
+ com.example.motorshop.activity.bill.DonDat$2
+ com.example.motorshop.activity.bill.DonDat$3
+com/example/motorshop/db/DBManager.java
+ com.example.motorshop.db.DBManager
 com/example/motorshop/activity/bill/QuanLy_DonDat.java
  com.example.motorshop.activity.bill.QuanLy_DonDat
  com.example.motorshop.activity.bill.QuanLy_DonDat$1
