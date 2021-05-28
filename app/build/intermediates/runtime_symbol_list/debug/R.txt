@@ -2137,6 +2137,7 @@ int id tag_transition_group 0x7f080193
 int id tag_unhandled_key_event_manager 0x7f080194
 int id tag_unhandled_key_listeners 0x7f080195
 int id tblayoutBang 0x7f0801e5
+int id tblayoutBangCT 0x7f0801f7
 int id test_checkbox_android_button_tint 0x7f080196
 int id test_checkbox_app_button_tint 0x7f080197
 int id test_radiobutton_android_button_tint 0x7f080198
@@ -2183,6 +2184,7 @@ int id tvDeleteDP 0x7f0801bf
 int id tvEditBR 0x7f0801c0
 int id tvEditDP 0x7f0801c1
 int id tvGuest 0x7f0801c2
+int id tvHD 0x7f0801f8
 int id tvMain 0x7f0801c3
 int id tvProductName 0x7f0801c4
 int id tvProductPrice 0x7f0801c5
@@ -2264,6 +2266,7 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_brand 0x7f0b001c
+int layout activity_chi_tiet_don_dat 0x7f0b007e
 int layout activity_department 0x7f0b001d
 int layout activity_don_dat 0x7f0b0079
 int layout activity_login 0x7f0b001e

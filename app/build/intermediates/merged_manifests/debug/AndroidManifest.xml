@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MotorShop" >
+        <activity android:name="com.example.motorshop.activity.bill.ChiTietDonDat" />
         <activity android:name="com.example.motorshop.activity.login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

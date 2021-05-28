@@ -137,7 +137,6 @@ public class DonDat extends AppCompatActivity {
                     }
                 }
 
-
                 Toast.makeText(DonDat.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
             }
         });
@@ -477,4 +476,6 @@ public class DonDat extends AppCompatActivity {
             }
         }
     }
+
+
 }

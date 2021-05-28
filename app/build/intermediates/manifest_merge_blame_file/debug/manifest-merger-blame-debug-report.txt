@@ -11,7 +11,7 @@
 9-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:5:5-87:19
+11-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:5:5-84:19
 12        android:allowBackup="true"
 12-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -28,144 +28,147 @@
 19        android:testOnly="true"
 20        android:theme="@style/Theme.MotorShop" >
 20-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:11:9-47
-21        <activity android:name="com.example.motorshop.activity.login.LoginActivity" >
-21-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:13:9-19:20
-21-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:13:19-54
-22            <intent-filter>
-22-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-23                <action android:name="android.intent.action.MAIN" />
-23-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-23-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-24
-25                <category android:name="android.intent.category.LAUNCHER" />
-25-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-25-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-26            </intent-filter>
-27        </activity>
-28        <activity
-28-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:20:9-28:20
-29            android:name="com.example.motorshop.activity.login.VerifyActivity"
-29-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:21:13-49
-30            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" >
-30-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:22:13-62
-31            <intent-filter>
-31-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-32                <action android:name="android.intent.action.MAIN" />
-32-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-32-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-34-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-35            </intent-filter>
-36        </activity>
-37        <activity
-37-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:29:9-37:20
-38            android:name="com.example.motorshop.activity.main.MainActivity"
-38-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:30:13-46
-39            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" >
-39-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:31:13-62
-40            <intent-filter>
-40-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-41                <action android:name="android.intent.action.MAIN" />
-41-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-41-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-42
-43                <category android:name="android.intent.category.LAUNCHER" />
-43-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-43-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-44            </intent-filter>
-45        </activity>
-46        <activity android:name="com.example.motorshop.activity.bill.Menu_DonDat" >
-46-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:39:9-45:20
-46-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:39:19-51
-47            <intent-filter>
-47-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-48                <action android:name="android.intent.action.MAIN" />
-48-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-48-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-49
-50                <category android:name="android.intent.category.LAUNCHER" />
-50-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-50-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-51            </intent-filter>
-52        </activity>
-53        <activity android:name="com.example.motorshop.activity.bill.QuanLy_DonDat" >
-53-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:48:9-54:20
-53-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:48:19-53
-54            <intent-filter>
-54-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-55                <action android:name="android.intent.action.MAIN" />
-55-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-55-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-56
-57                <category android:name="android.intent.category.LAUNCHER" />
-57-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-57-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-58            </intent-filter>
-59        </activity>
-60        <activity android:name="com.example.motorshop.activity.bill.DonDat" >
-60-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:55:9-61:20
-60-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:55:19-46
-61            <intent-filter>
-61-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-62                <action android:name="android.intent.action.MAIN" />
-62-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-62-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-63
-64                <category android:name="android.intent.category.LAUNCHER" />
-64-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-64-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-65            </intent-filter>
-66        </activity>
-67        <activity
-67-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:62:9-70:20
-68            android:name="com.example.motorshop.activity.brand.BrandActivity"
-68-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:63:13-48
-69            android:parentActivityName="com.example.motorshop.activity.main.MainActivity" >
-69-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:64:13-60
-70            <intent-filter>
-70-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-71                <action android:name="android.intent.action.MAIN" />
-71-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-71-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-72
-73                <category android:name="android.intent.category.LAUNCHER" />
-73-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-73-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-74            </intent-filter>
-75        </activity>
-76        <activity
-76-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:71:9-79:20
-77            android:name="com.example.motorshop.activity.product.ProductActivity"
-77-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:72:13-52
-78            android:parentActivityName="com.example.motorshop.activity.main.MainActivity" >
-78-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:73:13-60
-79            <intent-filter>
-79-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-80                <action android:name="android.intent.action.MAIN" />
-80-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-80-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-81
-82                <category android:name="android.intent.category.LAUNCHER" />
-82-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-82-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-83            </intent-filter>
-84        </activity>
-85        <activity android:name="com.example.motorshop.activity.department.DepartmentActivity" >
-85-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:80:9-86:20
-85-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:80:19-64
-86            <intent-filter>
-86-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
-87                <action android:name="android.intent.action.MAIN" />
-87-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
-87-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
-88
-89                <category android:name="android.intent.category.LAUNCHER" />
-89-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
-89-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
-90            </intent-filter>
-91        </activity>
-92    </application>
-93
-94</manifest>
+21        <activity android:name="com.example.motorshop.activity.bill.ChiTietDonDat" />
+21-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:12:9-65
+21-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:12:19-53
+22        <activity android:name="com.example.motorshop.activity.login.LoginActivity" >
+22-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:13:9-19:20
+22-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:13:19-54
+23            <intent-filter>
+23-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+24                <action android:name="android.intent.action.MAIN" />
+24-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+24-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+25
+26                <category android:name="android.intent.category.LAUNCHER" />
+26-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+26-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+27            </intent-filter>
+28        </activity>
+29        <activity
+29-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:20:9-28:20
+30            android:name="com.example.motorshop.activity.login.VerifyActivity"
+30-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:21:13-49
+31            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" >
+31-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:22:13-62
+32            <intent-filter>
+32-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+33-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+35-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+36            </intent-filter>
+37        </activity>
+38        <activity
+38-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:29:9-37:20
+39            android:name="com.example.motorshop.activity.main.MainActivity"
+39-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:30:13-46
+40            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" >
+40-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:31:13-62
+41            <intent-filter>
+41-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+42-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+44-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+45            </intent-filter>
+46        </activity>
+47        <activity android:name="com.example.motorshop.activity.bill.Menu_DonDat" >
+47-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:38:9-44:20
+47-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:38:19-51
+48            <intent-filter>
+48-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+49                <action android:name="android.intent.action.MAIN" />
+49-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+49-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+50
+51                <category android:name="android.intent.category.LAUNCHER" />
+51-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+51-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+52            </intent-filter>
+53        </activity>
+54        <activity android:name="com.example.motorshop.activity.bill.QuanLy_DonDat" >
+54-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:45:9-51:20
+54-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:45:19-53
+55            <intent-filter>
+55-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+56                <action android:name="android.intent.action.MAIN" />
+56-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+56-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+58-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+58-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+59            </intent-filter>
+60        </activity>
+61        <activity android:name="com.example.motorshop.activity.bill.DonDat" >
+61-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:52:9-58:20
+61-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:52:19-46
+62            <intent-filter>
+62-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+63                <action android:name="android.intent.action.MAIN" />
+63-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+63-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+64
+65                <category android:name="android.intent.category.LAUNCHER" />
+65-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+65-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+66            </intent-filter>
+67        </activity>
+68        <activity
+68-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:59:9-67:20
+69            android:name="com.example.motorshop.activity.brand.BrandActivity"
+69-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:60:13-48
+70            android:parentActivityName="com.example.motorshop.activity.main.MainActivity" >
+70-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:61:13-60
+71            <intent-filter>
+71-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+72                <action android:name="android.intent.action.MAIN" />
+72-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+72-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+74-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+74-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+75            </intent-filter>
+76        </activity>
+77        <activity
+77-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:68:9-76:20
+78            android:name="com.example.motorshop.activity.product.ProductActivity"
+78-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:69:13-52
+79            android:parentActivityName="com.example.motorshop.activity.main.MainActivity" >
+79-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:70:13-60
+80            <intent-filter>
+80-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+81                <action android:name="android.intent.action.MAIN" />
+81-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+81-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+82
+83                <category android:name="android.intent.category.LAUNCHER" />
+83-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+83-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+84            </intent-filter>
+85        </activity>
+86        <activity android:name="com.example.motorshop.activity.department.DepartmentActivity" >
+86-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:77:9-83:20
+86-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:77:19-64
+87            <intent-filter>
+87-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:14:13-18:29
+88                <action android:name="android.intent.action.MAIN" />
+88-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:17-69
+88-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:15:25-66
+89
+90                <category android:name="android.intent.category.LAUNCHER" />
+90-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:17-77
+90-->C:\Users\Admin\Desktop\Test\MotorShop\MotorShop\app\src\main\AndroidManifest.xml:17:27-74
+91            </intent-filter>
+92        </activity>
+93    </application>
+94
+95</manifest>

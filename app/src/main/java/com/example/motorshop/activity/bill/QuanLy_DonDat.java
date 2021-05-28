@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
     Button btnThemDD, btnCTDD, btnLoc;
     CheckBox cbTTTang, cbTTGiam;
     TableLayout tableLayout;
+    EditText edtMaDDH;
 
     String billType;
     String billM = "XE";
@@ -57,22 +59,8 @@ public class QuanLy_DonDat extends AppCompatActivity {
         billType = inten.getStringExtra("loai_DD");
         init_DonDat(billType);
 
-
-
-
-
-//        dbR.testDltCTDDX();
-//        dbR.testInsCTDDX();
-//        testShowDDH();
-//        testShowDDX();
-
         showDDXList();
-
-//        testInsertDBNCC();
-//        testInsertDBXE();
-
         loadDSXeFromDB();
-
         setEven();
     }
 
@@ -84,6 +72,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
         tableLayout = (TableLayout) findViewById(R.id.tblayoutBang);
         cbTTTang = (CheckBox) findViewById(R.id.chbTongTienTangDan);
         cbTTGiam = (CheckBox) findViewById(R.id.chbTongTienGiamDan);
+        edtMaDDH = (EditText)findViewById(R.id.edtTextnhapMaDDH);
     }
 
     private void setEven() {
@@ -111,6 +100,17 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     showDDXList();
                     System.out.println("Sap xep giam dan");
                 }
+                if(!edtMaDDH.getText().toString().equals("")){
+                    for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
+                        tableLayout.removeViewAt(i);
+                    }
+                    filterDDH();
+                }else{
+                    for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
+                        tableLayout.removeViewAt(i);
+                    }
+                    showDDXList();
+                }
 
             }
         });
@@ -120,6 +120,18 @@ public class QuanLy_DonDat extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(QuanLy_DonDat.this, DonDat.class);
                 intent.putExtra("loai_DD", billType);
+                startActivity(intent);
+            }
+        });
+        btnCTDD.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String maHD = edtMaDDH.getText().toString();
+                String tmp = billType.concat("@");
+                tmp = tmp.concat(maHD);
+                Intent intent = new Intent(QuanLy_DonDat.this, ChiTietDonDat.class);
+                intent.putExtra("loai_DD", tmp);
                 startActivity(intent);
             }
         });
@@ -284,9 +296,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
         }
 
         return null;
-
-
-    }
+  }
 
     private DonHang findDHByMADH(String maDH) {
         if (dsDh.size() == 0) {
@@ -447,6 +457,27 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
             System.out.println(dsDh.get(i).getCmnd());
         }
+    }
+
+    public void filterDDH(){
+
+        String maHD = edtMaDDH.getText().toString();
+
+            List<HoaDon> tmp1 = new ArrayList<HoaDon>();
+            List<HoaDon> tmp2 = new ArrayList<HoaDon>();
+            tmp2 = dsHD;
+            for(int i=0;i<dsHD.size();i++){
+                if(dsHD.get(i).getMaHD().equals(maHD)){
+                    tmp1.add(dsHD.get(i));break;
+
+                }
+            }
+            dsHD = tmp1;
+            showDDXList();
+            dsHD = tmp2;
+
+
+
     }
 
 }

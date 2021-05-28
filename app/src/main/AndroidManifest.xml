@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MotorShop">
-
+        <activity android:name=".bill.ChiTietDonDat"></activity>
         <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".bill.Menu_DonDat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,8 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".bill.QuanLy_DonDat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
