@@ -85,19 +85,22 @@ public class QuanLy_DonDat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(cbTTTang.isChecked()){
-                    sXTienTang();
+
                     for(int i=tableLayout.getChildCount()-1;i>0;i--){
                         tableLayout.removeViewAt(i);
                     }
+                    sXTienTang();
                     showDDXList();
                     System.out.println("Sap xep tang dan");
                 }
 
                 if(cbTTGiam.isChecked()){
-                    sXTienGiam();
+
+
                     for(int i=tableLayout.getChildCount()-1;i>0;i--){
                         tableLayout.removeViewAt(i);
                     }
+                    sXTienGiam();
                     showDDXList();
                     System.out.println("Sap xep giam dan");
                 }
@@ -117,32 +120,50 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     public void sXTienTang() {
 
+
         int n = dsHD.size();
-        for (int i = 0; i < n - 1; i++)
+        for (int i = 0; i < n - 1; i++){
+
+            HoaDon temp;
             for (int j = 0; j < n - i - 1; j++)
                 if (dsHD.get(j).getTongTien() > dsHD.get(j + 1).getTongTien()) {
-                    // swap arr[j+1] và arr[i]
-                    HoaDon temp = dsHD.get(j);
+
+                    temp = new HoaDon();
+                    temp.setMaHD(dsHD.get(j).getMaHD());
+                    temp.setTongTien(dsHD.get(j).getTongTien());
                     dsHD.get(j).setMaHD(dsHD.get(j + 1).getMaHD());
                     dsHD.get(j).setTongTien(dsHD.get(j + 1).getTongTien());
                     dsHD.get(j + 1).setMaHD(temp.getMaHD());
                     dsHD.get(j + 1).setTongTien(temp.getTongTien());
+
                 }
+
+        }
+
+
+
     }
 
     public void sXTienGiam() {
 
         int n = dsHD.size();
+        HoaDon temp;
         for (int i = 0; i < n - 1; i++)
-            for (int j = 0; j < n - i - 1; j++)
-                if (dsHD.get(j).getTongTien() < dsHD.get(j + 1).getTongTien()) {
-                    // swap arr[j+1] và arr[i]
-                    HoaDon temp = dsHD.get(j);
-                    dsHD.get(j).setMaHD(dsHD.get(j + 1).getMaHD());
-                    dsHD.get(j).setTongTien(dsHD.get(j + 1).getTongTien());
-                    dsHD.get(j + 1).setMaHD(temp.getMaHD());
-                    dsHD.get(j + 1).setTongTien(temp.getTongTien());
+            for (int j = i+1; j < n; j++)
+                if (dsHD.get(i).getTongTien() < dsHD.get(j).getTongTien()) {
+
+                    temp = new HoaDon();
+
+                    temp.setMaHD(dsHD.get(j).getMaHD());
+                    temp.setTongTien(dsHD.get(j).getTongTien());
+
+                    dsHD.get(j).setMaHD(dsHD.get(i).getMaHD());
+                    dsHD.get(j).setTongTien(dsHD.get(i).getTongTien());
+                    dsHD.get(i).setMaHD(temp.getMaHD());
+                    dsHD.get(i).setTongTien(temp.getTongTien());
+
                 }
+
     }
 
     public void init_DonDat(String billType) {
@@ -167,21 +188,24 @@ public class QuanLy_DonDat extends AppCompatActivity {
     }
 
     public void initDSHD() {
+
         int index = 0;
         for (int i = 0; i < dsDDX.size(); i++) {
-            if (index == 0) {
+            if (i == 0) {
                 dsHD.add(new HoaDon(dsDDX.get(i).getMaDH(),
                         tongTienMotHD(dsDDX.get(i).getMaDH())));
 
 
+
             } else {
-                if (!(dsHD.get(index).equals(dsDDX.get(i).getMaDH()))) {
+                if(dsHD.get(index).getMaHD().equals(dsDDX.get(i).getMaDH()));
+                else{
+
                     index++;
                     dsHD.add(new HoaDon(dsDDX.get(i).getMaDH(),
                             tongTienMotHD(dsDDX.get(i).getMaDH())));
-
-
                 }
+
             }
 
         }
@@ -251,7 +275,6 @@ public class QuanLy_DonDat extends AppCompatActivity {
             txtMa.setText(maHD);
             TextView txtND = new TextView(getApplicationContext());
             TextView txtHoTen = new TextView(getApplicationContext());
-            txtND.setText(dsDDX.get(i).getNgayDat());
 
             for (int j = 0; j < dsDDX.size(); j++) {
                 if (dsDDX.get(j).getMaDH().equals(maHD)) {

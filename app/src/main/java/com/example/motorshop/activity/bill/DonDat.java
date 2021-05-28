@@ -98,9 +98,7 @@ public class DonDat extends AppCompatActivity {
 
                 Toast.makeText(DonDat.this, "Cap Nhat", Toast.LENGTH_SHORT).show();
                 addMotoToTable();
-//                for (int i = 0; i < cartIndex; i++) {
-//                    totalPrice += dsXe.get(cart[i]).getDonGia();
-//                }
+
 
             }
         });
@@ -117,8 +115,8 @@ public class DonDat extends AppCompatActivity {
 
                 dbR.insertDH(maDDH, "", cmnd, maNV);
 
-                for (int i = 0; i < cartIndex; i++) {
-                    int sl = 1;
+                for (int i = 0; i < dsHH.size(); i++) {
+                    int sl = dsHH.get(i).getSoLuong();
                     dbR.insertCTDDX(maDDH, dsHH.get(i).getMaSP(),
                             String.valueOf(sl), String.valueOf(dsHH.get(i).getDonGia()));
                     giamSLXe(dsHH.get(i).getMaSP());
