@@ -435,7 +435,7 @@ public class DBManager extends SQLiteOpenHelper {
     public void insertDH(String maDDH, String nd, String cmnd, String maNV) {
 
         String sqlDDH = "INSERT INTO DONDATHANG (MADH,NGAYDAT,CMND,MANV) VALUES(" +
-                "'" + maDDH + "'," + "'2021/10/5'," + "'" + cmnd + "'," + "'" + maNV + "')";
+                "'" + maDDH + "'," + "'"+nd+"'," + "'" + cmnd + "'," + "'" + maNV + "')";
         SQLiteDatabase db = this.getWritableDatabase();
         System.out.println(sqlDDH);
         db.execSQL(sqlDDH);

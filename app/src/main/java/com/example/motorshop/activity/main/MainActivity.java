@@ -91,9 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 if(position == 2){//BILL
-
-
-
                     Intent intent = new Intent(getApplicationContext(), Menu_DonDat.class);
                     startActivity(intent);
                     Log.d(TAG, "onItemClick gridview: " + itemList.get(position).getName());

@@ -30,6 +30,7 @@
     <string name="icon_edit">&#xf044;</string>
     <string name="icon_delete">&#xf1f8;</string>
     <string name="icon_add">&#xf067;</string>
+    <string name="icon_info">&#xf129;</string>
     <string name="brand_icon">&#xf1ad;</string>
     <string name="product_icon">&#xf21c;</string>
     <string name="people_icon">&#xf0c0;</string>

@@ -1798,7 +1798,6 @@ id bottom
 id bounce
 id brands
 id btnAddBR
-id btnCTDD
 id btnCancelDP
 id btnCapNhap
 id btnHDPT
@@ -1806,10 +1805,8 @@ id btnHDX
 id btnHoaDon_Check
 id btnInsertDP
 id btnInsertPD
-id btnLoc
 id btnLogin
 id btnSubmit
-id btnThemDD
 id btnUpdateBR
 id btnUpdateDP
 id btnXong
@@ -2059,6 +2056,7 @@ id postLayout
 id products
 id progress_circular
 id progress_horizontal
+id qlddLoc
 id radio
 id ratio
 id rectangles
@@ -2178,6 +2176,7 @@ id transition_transform
 id triangle
 id tvBRName
 id tvBrandEditTitle
+id tvCTDD
 id tvDPID
 id tvDPName
 id tvDeleteBR
@@ -2189,11 +2188,10 @@ id tvHD
 id tvMain
 id tvProductName
 id tvProductPrice
+id tvThemDD
 id tvType
-id txtViewChiTietDDX
 id txtViewHoaDon_Ma
 id txtViewHoaDon_Ten
-id txtViewThemDDX
 id unchecked
 id uniform
 id unlabeled
@@ -2455,6 +2453,7 @@ string icon_add
 string icon_content_description
 string icon_delete
 string icon_edit
+string icon_info
 string iconbtnSearch
 string image
 string insert

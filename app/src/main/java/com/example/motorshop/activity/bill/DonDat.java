@@ -107,24 +107,23 @@ public class DonDat extends AppCompatActivity {
         btnXong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String maNV = "NV01";
                 String maDDH = edtMaDDH.getText().toString();
                 String hoTen = edtHoTen.getText().toString();
                 String cmnd = edtCmnd.getText().toString();
                 String diaChi = edtDiaChi.getText().toString();
-
+                long millis=System.currentTimeMillis();
+                java.sql.Date date=new java.sql.Date(millis);
+                String tmp[] = date.toString().split("-");
+                String nd = tmp[0]+"/"+tmp[1]+"/"+tmp[2];
                 if (oldCtm == false) dbR.insertCTM(cmnd, hoTen, diaChi, "");
-
-                dbR.insertDH(maDDH, "", cmnd, maNV);
-
+                dbR.insertDH(maDDH, nd.toString(), cmnd, maNV);
                 if(billType.equals(billM)){
                     for (int i = 0; i < dsHH.size(); i++) {
                         int sl = dsHH.get(i).getSoLuong();
                         dbR.insertCTDDX(maDDH, dsHH.get(i).getMaSP(),
                                 String.valueOf(sl), String.valueOf(dsHH.get(i).getDonGia()));
                         giamSLXe(dsHH.get(i).getMaSP());
-
                     }
                 }
                 if(billType.equals(billA)){

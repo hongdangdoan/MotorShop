@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bill.QuanLy_DonDat"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".bill.QuanLy_DonDat">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,11 +33,11 @@
             android:gravity="center"
             android:hint="@string/hintNhapMaDDH" />
 
-        <Button
-            android:id="@+id/btnLoc"
+        <TextView
+            android:id="@+id/qlddLoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lọc" />
+            android:text="@string/iconbtnSearch" />
 
     </LinearLayout>
 
@@ -48,7 +49,7 @@
         <TextView
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Loc" />
+            android:text="@string/txtViewLoc" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,7 +112,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtViewSapXep"/>
+            android:text="@string/txtViewSapXep" />
 
         <CheckBox
             android:id="@+id/chbTongTienTangDan"
@@ -127,39 +128,47 @@
 
     </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tblayoutBang"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="250dp"
-        android:orientation="horizontal">
+        android:scrollbars="none">
 
-        <TableRow
+        <TableLayout
+            android:id="@+id/tblayoutBang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="250dp"
+            android:isScrollContainer="true"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txtViewMaDDH" />
+            <TableRow
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txtViewNgayDat" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/hoTenKH" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtViewMaDDH" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/tongTien" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtViewNgayDat" />
 
-        </TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hoTenKH" />
 
-    </TableLayout>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tongTien" />
+
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
 
 
     <LinearLayout
@@ -172,55 +181,57 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnThemDD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                />
-
             <TextView
-                android:id="@+id/txtViewThemDDX"
+                android:id="@+id/tvThemDD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="@string/iconQLDDX"
-                android:textSize="30sp" />
+                android:text="@string/icon_add"
+                android:textSize="40sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="@string/QLDDX" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/txtViewThemDDX"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="right"-->
+            <!--                android:text="@string/iconQLDDX"-->
+            <!--                android:textSize="30sp" />-->
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="right"-->
+            <!--                android:text="@string/QLDDX" />-->
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="10dp"
-            android:layout_height="50dp">
-        </LinearLayout>
+            android:layout_height="50dp"></LinearLayout>
 
         <LinearLayout
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnCTDD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
             <TextView
-                android:id="@+id/txtViewChiTietDDX"
+                android:id="@+id/tvCTDD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/iconQLDDX"
-                android:textSize="30sp" />
+                android:text="@string/icon_info"
+                android:textSize="40sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/QLDDX" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/txtViewChiTietDDX"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="@string/iconQLDDX"-->
+            <!--                android:textSize="30sp" />-->
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="@string/QLDDX" />-->
 
         </LinearLayout>
 

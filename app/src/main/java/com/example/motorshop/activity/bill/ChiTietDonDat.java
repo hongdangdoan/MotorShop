@@ -113,9 +113,7 @@ public class ChiTietDonDat extends AppCompatActivity {
         if (billType.equals(billA)) {
             System.out.println("kiem tra");
             System.out.println(dsDDPT.size());
-
             for (int i = 0; i < dsDDPT.size(); i++) {
-
                 sl = new TextView(getApplicationContext());
                 donGia = new TextView(getApplicationContext());
                 tenSP = new TextView(getApplicationContext());
@@ -137,8 +135,6 @@ public class ChiTietDonDat extends AppCompatActivity {
                 tblayoutBang.addView(tbRow);
             }
         }
-
-
     }
 
 }

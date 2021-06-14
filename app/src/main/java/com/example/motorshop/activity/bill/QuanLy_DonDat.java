@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import com.example.motorshop.datasrc.NhaCungCap;
 import com.example.motorshop.datasrc.PhuTung;
 import com.example.motorshop.datasrc.Xe;
 import com.example.motorshop.db.DBManager;
+import com.example.motorshop.helper.Icon_Manager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,9 +32,11 @@ import java.util.List;
 
 public class QuanLy_DonDat extends AppCompatActivity {
 
-    Button btnThemDD, btnCTDD, btnLoc;
-    CheckBox cbTTTang, cbTTGiam;
+
+    TextView tvLoc, tvThemDD, tvCTDD;
+    CheckBox cbTTTang, cbTTGiam, cbNgay;
     TableLayout tableLayout;
+    TableRow tableRow;
     EditText edtMaDDH;
 
     String billType;
@@ -47,7 +51,6 @@ public class QuanLy_DonDat extends AppCompatActivity {
     List<ChiTietSanPhamDonHang> dsDDPT = new ArrayList<ChiTietSanPhamDonHang>();
 
 
-
     DBManager dbR = new DBManager(this);
 
     @Override
@@ -57,6 +60,9 @@ public class QuanLy_DonDat extends AppCompatActivity {
         setControl();
         Intent inten = getIntent();
         billType = inten.getStringExtra("loai_DD");
+        tvLoc.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
+        tvThemDD.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
+        tvCTDD.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
         init_DonDat(billType);
 
         showDDXList();
@@ -66,20 +72,40 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     private void setControl() {
 
-        btnThemDD = (Button) findViewById(R.id.btnThemDD);
-        btnCTDD = (Button) findViewById(R.id.btnCTDD);
-        btnLoc = (Button) findViewById(R.id.btnLoc);
+        tvThemDD = (TextView) findViewById(R.id.tvThemDD);
+        tvCTDD = (TextView) findViewById(R.id.tvCTDD);
+        tvLoc = (TextView) findViewById(R.id.qlddLoc);
         tableLayout = (TableLayout) findViewById(R.id.tblayoutBang);
+
         cbTTTang = (CheckBox) findViewById(R.id.chbTongTienTangDan);
         cbTTGiam = (CheckBox) findViewById(R.id.chbTongTienGiamDan);
-        edtMaDDH = (EditText)findViewById(R.id.edtTextnhapMaDDH);
+        cbNgay = (CheckBox) findViewById(R.id.chbDonTrongNgay);
+        edtMaDDH = (EditText) findViewById(R.id.edtTextnhapMaDDH);
     }
 
     private void setEven() {
 
-        btnLoc.setOnClickListener(new View.OnClickListener() {
+        tableLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int clicked = v.getId();
+                System.out.println("click");
+                System.out.println(clicked);
+            }
+        });
+
+
+        tvLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cbNgay.isChecked()) {
+                    for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
+                        tableLayout.removeViewAt(i);
+                    }
+                    locTheoNgay();
+//                    showDDXList();
+//                    init_DonDat(billType);
+                }
                 if (cbTTTang.isChecked()) {
 
                     for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
@@ -100,12 +126,12 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     showDDXList();
                     System.out.println("Sap xep giam dan");
                 }
-                if(!edtMaDDH.getText().toString().equals("")){
+                if (!edtMaDDH.getText().toString().equals("")) {
                     for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
                         tableLayout.removeViewAt(i);
                     }
                     filterDDH();
-                }else{
+                } else {
                     for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
                         tableLayout.removeViewAt(i);
                     }
@@ -115,7 +141,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
             }
         });
 
-        btnThemDD.setOnClickListener(new View.OnClickListener() {
+        tvThemDD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(QuanLy_DonDat.this, DonDat.class);
@@ -123,7 +149,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnCTDD.setOnClickListener(new View.OnClickListener() {
+        tvCTDD.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -138,15 +164,12 @@ public class QuanLy_DonDat extends AppCompatActivity {
     }
 
     public void sXTienTang() {
-
-
         int n = dsHD.size();
         for (int i = 0; i < n - 1; i++) {
 
             HoaDon temp;
             for (int j = 0; j < n - i - 1; j++)
                 if (dsHD.get(j).getTongTien() > dsHD.get(j + 1).getTongTien()) {
-
                     temp = new HoaDon();
                     temp.setMaHD(dsHD.get(j).getMaHD());
                     temp.setTongTien(dsHD.get(j).getTongTien());
@@ -154,22 +177,16 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     dsHD.get(j).setTongTien(dsHD.get(j + 1).getTongTien());
                     dsHD.get(j + 1).setMaHD(temp.getMaHD());
                     dsHD.get(j + 1).setTongTien(temp.getTongTien());
-
                 }
-
         }
-
-
     }
 
     public void sXTienGiam() {
-
         int n = dsHD.size();
         HoaDon temp;
         for (int i = 0; i < n - 1; i++)
             for (int j = i + 1; j < n; j++)
                 if (dsHD.get(i).getTongTien() < dsHD.get(j).getTongTien()) {
-
                     temp = new HoaDon();
                     temp.setMaHD(dsHD.get(j).getMaHD());
                     temp.setTongTien(dsHD.get(j).getTongTien());
@@ -177,9 +194,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     dsHD.get(j).setTongTien(dsHD.get(i).getTongTien());
                     dsHD.get(i).setMaHD(temp.getMaHD());
                     dsHD.get(i).setTongTien(temp.getTongTien());
-
                 }
-
     }
 
     public void init_DonDat(String billType) {
@@ -192,21 +207,21 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     public void init_DonDat_Xe() {
 
-        if(billType.equals(billM))
-        dsDDX = dbR.loadDSDDX();
+        if (billType.equals(billM))
+            dsDDX = dbR.loadDSDDX();
         addInfoToDDX();
         initDSHD();
 
 
-        btnThemDD.setText("Thêm DDX");
-        btnCTDD.setText("CT DDX");
+//        btnThemDD.setText("Thêm DDX");
+//        btnCTDD.setText("CT DDX");
 
     }
 
     public void initDSHD() {
 
         int index = 0;
-        if(billType.equals(billM)){
+        if (billType.equals(billM)) {
 
             for (int i = 0; i < dsDDX.size(); i++) {
                 if (i == 0) {
@@ -227,7 +242,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
             }
         }
-        if(billType.equals(billA)){
+        if (billType.equals(billA)) {
             for (int i = 0; i < dsDDPT.size(); i++) {
                 if (i == 0) {
                     dsHD.add(new HoaDon(dsDDPT.get(i).getMaDH(),
@@ -251,7 +266,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
     }
 
     public void addInfoToDDX() {
-        if(billType.equals(billM)){
+        if (billType.equals(billM)) {
 
             for (int i = 0; i < dsDDX.size(); i++) {
                 dsDDX.get(i).setCmnd(findDHByMADH(dsDDX.get(i).getMaDH()).getCmnd());
@@ -260,7 +275,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
             }
         }
-        if(billType.equals(billA)){
+        if (billType.equals(billA)) {
             for (int i = 0; i < dsDDPT.size(); i++) {
                 dsDDPT.get(i).setCmnd(findDHByMADH(dsDDPT.get(i).getMaDH()).getCmnd());
                 dsDDPT.get(i).setNgayDat(findDHByMADH(dsDDPT.get(i).getMaDH()).getNgayDat());
@@ -274,12 +289,12 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     public void init_DonDat_PT() {
 
-         dsDDPT = dbR.loadDSDDPT();
+        dsDDPT = dbR.loadDSDDPT();
 
         addInfoToDDX();
         initDSHD();
-        btnThemDD.setText("Thêm DDPT");
-        btnCTDD.setText("CT DDPT");
+//        btnThemDD.setText("Thêm DDPT");
+//        btnCTDD.setText("CT DDPT");
 
     }
 
@@ -296,7 +311,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
         }
 
         return null;
-  }
+    }
 
     private DonHang findDHByMADH(String maDH) {
         if (dsDh.size() == 0) {
@@ -316,20 +331,14 @@ public class QuanLy_DonDat extends AppCompatActivity {
     }
 
     private void showDDXList() {
-
-
         TableRow tbRow = null;
-
         for (int i = 0; i < dsHD.size(); i++) {
-
             String maHD = dsHD.get(i).getMaHD();
-
             TextView txtMa = new TextView(getApplicationContext());
             txtMa.setText(maHD);
             TextView txtND = new TextView(getApplicationContext());
             TextView txtHoTen = new TextView(getApplicationContext());
-
-            if(billType.equals(billM)){
+            if (billType.equals(billM)) {
                 for (int j = 0; j < dsDDX.size(); j++) {
                     if (dsDDX.get(j).getMaDH().equals(maHD)) {
                         txtND.setText(dsDDX.get(j).getNgayDat());
@@ -338,7 +347,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     }
                 }
             }
-            if(billType.equals(billA)){
+            if (billType.equals(billA)) {
                 for (int j = 0; j < dsDDPT.size(); j++) {
                     if (dsDDPT.get(j).getMaDH().equals(maHD)) {
                         txtND.setText(dsDDPT.get(j).getNgayDat());
@@ -347,24 +356,34 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     }
                 }
             }
-
-
             TextView txtTongTien = new TextView(getApplicationContext());
-
             txtTongTien.setText(String.valueOf(dsHD.get(i).getTongTien()));
             tbRow = new TableRow(getApplicationContext());
+            tbRow.setId(i);
             tbRow.addView(txtMa, 0);
             tbRow.addView(txtND, 1);
             tbRow.addView(txtHoTen, 2);
             tbRow.addView(txtTongTien);
-            tableLayout.addView(tbRow);
+            tbRow.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int clicked = v.getId();
+                    String maHD = dsHD.get(clicked).getMaHD();
+                    String tmp = billType.concat("@");
+                    tmp = tmp.concat(maHD);
+                    Intent intent = new Intent(QuanLy_DonDat.this, ChiTietDonDat.class);
+                    intent.putExtra("loai_DD", tmp);
+                    startActivity(intent);
 
+                }
+            }));
+            tableLayout.addView(tbRow);
         }
     }
 
     public int tongTienMotHD(String maHD) {
         int tongTien = 0;
-        if(billType.equals(billM)){
+        if (billType.equals(billM)) {
 
             for (int i = 0; i < dsDDX.size(); i++) {
                 if (dsDDX.get(i).getMaDH().equals(maHD)) {
@@ -373,7 +392,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
             }
         }
-        if(billType.equals(billA)){
+        if (billType.equals(billA)) {
             for (int i = 0; i < dsDDPT.size(); i++) {
                 if (dsDDPT.get(i).getMaDH().equals(maHD)) {
                     tongTien += dsDDPT.get(i).getDonGiaBan() * dsDDPT.get(i).getSoLuong();
@@ -459,23 +478,67 @@ public class QuanLy_DonDat extends AppCompatActivity {
         }
     }
 
-    public void filterDDH(){
+    public void filterDDH() {
 
         String maHD = edtMaDDH.getText().toString();
 
-            List<HoaDon> tmp1 = new ArrayList<HoaDon>();
-            List<HoaDon> tmp2 = new ArrayList<HoaDon>();
-            tmp2 = dsHD;
-            for(int i=0;i<dsHD.size();i++){
-                if(dsHD.get(i).getMaHD().equals(maHD)){
-                    tmp1.add(dsHD.get(i));break;
+        List<HoaDon> tmp1 = new ArrayList<HoaDon>();
+        List<HoaDon> tmp2 = new ArrayList<HoaDon>();
+        tmp2 = dsHD;
+        for (int i = 0; i < dsHD.size(); i++) {
+            if (dsHD.get(i).getMaHD().equals(maHD)) {
+                tmp1.add(dsHD.get(i));
+                break;
 
+            }
+        }
+        dsHD = tmp1;
+        showDDXList();
+        dsHD = tmp2;
+
+    }
+
+    public String layNgayThangHienTai() {
+        long millis = System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        String tmp[] = date.toString().split("-");
+        String nd = tmp[0] + "/" + tmp[1] + "/" + tmp[2];
+        return nd.toString();
+    }
+
+    public void locTheoNgay() {
+        String nd = layNgayThangHienTai();
+        String tmp[] = nd.split("/");
+        String ngay = tmp[2];
+        List<DonHang> ltmp = new ArrayList<DonHang>();
+        for (int i = 0; i < dsDh.size(); i++) {
+            String ndd = dsDh.get(i).getNgayDat().toString();
+            String str[] = ndd.split("/");
+
+            if (str[2].equals(ngay)) {
+                ltmp.add(dsDh.get(i));
+            }
+        }
+        System.out.println("kiem tra");
+
+        List<ChiTietSanPhamDonHang> dsDDXT = new ArrayList<ChiTietSanPhamDonHang>();
+        for (int i = 0; i < ltmp.size(); i++) {
+            for (int j = 0; j < dsDDX.size(); j++) {
+                if (ltmp.get(i).getMaDH().equals(dsDDX.get(j).getMaDH())) {
+                    dsDDXT.add(dsDDX.get(j));
                 }
             }
-            dsHD = tmp1;
-            showDDXList();
-            dsHD = tmp2;
 
+        }
+
+        List<ChiTietSanPhamDonHang> l = new ArrayList<ChiTietSanPhamDonHang>();
+        l = dsDDX;
+        dsDDX = new ArrayList<ChiTietSanPhamDonHang>();
+        dsDDX = dsDDXT;
+        initDSHD();
+        showDDXList();
+        dsDDX = l;
+//        init_DonDat(billType);
 
 
     }
