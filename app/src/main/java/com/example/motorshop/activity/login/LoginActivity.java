@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 pwd = h.getCryptoHash(pwd, "MD5");
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://172.168.86.127:8080/api/motorshop/customers/authen?usn=" + usn + "&pwd=" + pwd;
+                String url = "http://192.168.1.8:8080/api/motorshop/customers/authen?usn=" + usn + "&pwd=" + pwd;
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         response -> {
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 );
                 queue.add(stringRequest);
 
-                url = "http://172.168.86.127:8080/api/motorshop/staffs/authen?usn=" + usn + "&pwd=" + pwd;
+                url = "http://192.168.1.8:8080/api/motorshop/staffs/authen?usn=" + usn + "&pwd=" + pwd;
                 stringRequest = new StringRequest(Request.Method.GET, url,
                         response -> {
                             if (!h.isNull(response)) {
