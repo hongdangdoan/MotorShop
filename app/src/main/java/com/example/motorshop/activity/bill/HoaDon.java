@@ -1,17 +1,17 @@
 package com.example.motorshop.activity.bill;
 
 public class HoaDon {
-    private String maHD;
+    private int maHD;
     private int tongTien;
 
     public HoaDon(){}
 
-    public HoaDon(String maHD, int tongTien) {
+    public HoaDon(int maHD, int tongTien) {
         this.maHD = maHD;
         this.tongTien = tongTien;
     }
 
-    public String getMaHD() {
+    public int getMaHD() {
         return maHD;
     }
 
@@ -19,7 +19,7 @@ public class HoaDon {
         return tongTien;
     }
 
-    public void setMaHD(String maHD) {
+    public void setMaHD(int maHD) {
         this.maHD = maHD;
     }
 

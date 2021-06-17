@@ -23,15 +23,18 @@ public class VerifyActivity extends AppCompatActivity {
     EditText etOTP;
     ImageView imvDone;
     Button btnSubmit;
-    int num;
 
     AnimatedVectorDrawable avd;
     AnimatedVectorDrawableCompat avdc;
+
+    private String userType;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
+        setExtra(savedInstanceState, userType, id);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setControl();
@@ -43,6 +46,13 @@ public class VerifyActivity extends AppCompatActivity {
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         imvDone = (ImageView) findViewById(R.id.imvDone);
         imvDone.setVisibility(View.INVISIBLE);
+    }
+
+    public void setExtra(Bundle b, String userType, String id) {
+        if(b != null) {
+            userType = b.getString("userType");
+            id = b.getString("id");
+        }
     }
 
     private void setEvent() {

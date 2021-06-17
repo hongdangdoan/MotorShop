@@ -1,97 +1,44 @@
-com/example/motorshop/activity/brand/BrandActivity.java
- com.example.motorshop.activity.brand.BrandActivity
- com.example.motorshop.activity.brand.BrandActivity$1
- com.example.motorshop.activity.brand.BrandActivity$2
- com.example.motorshop.activity.brand.BrandActivity$2$1
- com.example.motorshop.activity.brand.BrandActivity$2$2
-com/example/motorshop/activity/bill/HoaDon.java
- com.example.motorshop.activity.bill.HoaDon
-com/example/motorshop/datasrc/MainItem.java
- com.example.motorshop.datasrc.MainItem
-com/example/motorshop/activity/department/DepartmentAdapter.java
- com.example.motorshop.activity.department.DepartmentAdapter
- com.example.motorshop.activity.department.DepartmentAdapter$1
- com.example.motorshop.activity.department.DepartmentAdapter$2
-com/example/motorshop/activity/bill/Menu_DonDat.java
- com.example.motorshop.activity.bill.Menu_DonDat
- com.example.motorshop.activity.bill.Menu_DonDat$1
- com.example.motorshop.activity.bill.Menu_DonDat$2
-com/example/motorshop/datasrc/KhachHang.java
- com.example.motorshop.datasrc.KhachHang
-com/example/motorshop/datasrc/ChiTietDonHang.java
- com.example.motorshop.datasrc.ChiTietDonHang
-com/example/motorshop/activity/department/DepartmentActivity.java
- com.example.motorshop.activity.department.DepartmentActivity
- com.example.motorshop.activity.department.DepartmentActivity$1
- com.example.motorshop.activity.department.DepartmentActivity$2
- com.example.motorshop.activity.department.DepartmentActivity$3
+com/example/motorshop/helper/Helper.java
+ com.example.motorshop.helper.Helper
+com/example/motorshop/datasrc/AccessoryDetail.java
+ com.example.motorshop.datasrc.AccessoryDetail
+com/example/motorshop/datasrc/BillDetail.java
+ com.example.motorshop.datasrc.BillDetail
+com/example/motorshop/datasrc/Brand.java
+ com.example.motorshop.datasrc.Brand
+com/example/motorshop/datasrc/Staff.java
+ com.example.motorshop.datasrc.Staff
+com/example/motorshop/datasrc/Customer.java
+ com.example.motorshop.datasrc.Customer
+com/example/motorshop/datasrc/Image.java
+ com.example.motorshop.datasrc.Image
+com/example/motorshop/datasrc/Motor.java
+ com.example.motorshop.datasrc.Motor
+com/example/motorshop/datasrc/Accessory.java
+ com.example.motorshop.datasrc.Accessory
+com/example/motorshop/datasrc/Depart.java
+ com.example.motorshop.datasrc.Depart
+com/example/motorshop/datasrc/Warranty.java
+ com.example.motorshop.datasrc.Warranty
+com/example/motorshop/datasrc/MotorDetail.java
+ com.example.motorshop.datasrc.MotorDetail
+com/example/motorshop/datasrc/MotorInfo.java
+ com.example.motorshop.datasrc.MotorInfo
+com/example/motorshop/datasrc/WarrantyDetail.java
+ com.example.motorshop.datasrc.WarrantyDetail
 com/example/motorshop/activity/BuildConfig.java
  com.example.motorshop.activity.BuildConfig
-com/example/motorshop/activity/product/ProductActivity.java
- com.example.motorshop.activity.product.ProductActivity
- com.example.motorshop.activity.product.ProductActivity$1
- com.example.motorshop.activity.product.ProductActivity$2
-com/example/motorshop/datasrc/Xe.java
- com.example.motorshop.datasrc.Xe
-com/example/motorshop/datasrc/BoPhan.java
- com.example.motorshop.datasrc.BoPhan
-com/example/motorshop/datasrc/NhanVien.java
- com.example.motorshop.datasrc.NhanVien
-com/example/motorshop/activity/product/ProductAdapter.java
- com.example.motorshop.activity.product.ProductAdapter
-com/example/motorshop/activity/main/MainActivity.java
- com.example.motorshop.activity.main.MainActivity
- com.example.motorshop.activity.main.MainActivity$1
-com/example/motorshop/datasrc/ThongSoPhuTung.java
- com.example.motorshop.datasrc.ThongSoPhuTung
-com/example/motorshop/datasrc/BaoHanh.java
- com.example.motorshop.datasrc.BaoHanh
-com/example/motorshop/datasrc/NhaCungCap.java
- com.example.motorshop.datasrc.NhaCungCap
-com/example/motorshop/activity/bill/DonDat.java
- com.example.motorshop.activity.bill.DonDat
- com.example.motorshop.activity.bill.DonDat$1
- com.example.motorshop.activity.bill.DonDat$2
- com.example.motorshop.activity.bill.DonDat$3
-com/example/motorshop/datasrc/SanPham.java
- com.example.motorshop.datasrc.SanPham
-com/example/motorshop/datasrc/PhuTung.java
- com.example.motorshop.datasrc.PhuTung
-com/example/motorshop/db/DBManager.java
- com.example.motorshop.db.DBManager
-com/example/motorshop/datasrc/ChiTietSanPhamDonHang.java
- com.example.motorshop.datasrc.ChiTietSanPhamDonHang
-com/example/motorshop/activity/bill/HangHoa.java
- com.example.motorshop.activity.bill.HangHoa
-com/example/motorshop/helper/Icon_Manager.java
- com.example.motorshop.helper.Icon_Manager
-com/example/motorshop/activity/bill/QuanLy_DonDat.java
- com.example.motorshop.activity.bill.QuanLy_DonDat
- com.example.motorshop.activity.bill.QuanLy_DonDat$1
- com.example.motorshop.activity.bill.QuanLy_DonDat$2
- com.example.motorshop.activity.bill.QuanLy_DonDat$3
- com.example.motorshop.activity.bill.QuanLy_DonDat$4
- com.example.motorshop.activity.bill.QuanLy_DonDat$5
-com/example/motorshop/datasrc/DanhSachSanPhamBaoHanh.java
- com.example.motorshop.datasrc.DanhSachSanPhamBaoHanh
-com/example/motorshop/datasrc/DonHang.java
- com.example.motorshop.datasrc.DonHang
-com/example/motorshop/datasrc/ThongSoXe.java
- com.example.motorshop.datasrc.ThongSoXe
-com/example/motorshop/activity/bill/ChiTietDonDat.java
- com.example.motorshop.activity.bill.ChiTietDonDat
-com/example/motorshop/activity/brand/BrandAdapter.java
- com.example.motorshop.activity.brand.BrandAdapter
- com.example.motorshop.activity.brand.BrandAdapter$1
- com.example.motorshop.activity.brand.BrandAdapter$2
+com/example/motorshop/datasrc/Bill.java
+ com.example.motorshop.datasrc.Bill
+com/example/motorshop/datasrc/MainItem.java
+ com.example.motorshop.datasrc.MainItem
 com/example/motorshop/activity/main/MainAdapter.java
  com.example.motorshop.activity.main.MainAdapter
 com/example/motorshop/activity/login/LoginActivity.java
  com.example.motorshop.activity.login.LoginActivity
-com/example/motorshop/helper/Regex.java
- com.example.motorshop.helper.Regex
+com/example/motorshop/activity/main/MainActivity.java
+ com.example.motorshop.activity.main.MainActivity
+ com.example.motorshop.activity.main.MainActivity$1
 com/example/motorshop/activity/login/VerifyActivity.java
  com.example.motorshop.activity.login.VerifyActivity
  com.example.motorshop.activity.login.VerifyActivity$1
-com/example/motorshop/datasrc/ChiTietBaoHanh.java
- com.example.motorshop.datasrc.ChiTietBaoHanh

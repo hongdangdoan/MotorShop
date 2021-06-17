@@ -12,15 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.motorshop.activity.R;
-import com.example.motorshop.datasrc.MainItem;
+import com.example.motorshop.datasrc.Main;
 
 import java.util.ArrayList;
 
-public class MainAdapter extends ArrayAdapter<MainItem> {
+public class MainAdapter extends ArrayAdapter<Main> {
 
     Context context;
     int resource;
-    ArrayList<MainItem> data;
+    ArrayList<Main> data;
 
     public MainAdapter(Context context, int resource, ArrayList data) {
         super(context, resource, data);
@@ -42,7 +42,7 @@ public class MainAdapter extends ArrayAdapter<MainItem> {
         ImageView imvMain = convertView.findViewById(R.id.imvMain);
         TextView tvMain = convertView.findViewById(R.id.tvMain);
 
-        MainItem mainItems = this.data.get(position);
+        Main mainItems = this.data.get(position);
         imvMain.setImageResource(mainItems.getImageMain());
         tvMain.setText(mainItems.getName());
 
