@@ -148,4 +148,15 @@ public class Helper {
             throw new RuntimeException(e);
         }
     }
+
+    public String deleteCharAtIndex(String str,int index){
+        StringBuilder tmp = new StringBuilder(str);
+        tmp.deleteCharAt(index);
+        return tmp.toString();
+    }
+    public String formatDate(String date){
+        date = date.replace("/","");
+        String str[] = date.split(" ");
+        return str[0].toString();
+    }
 }

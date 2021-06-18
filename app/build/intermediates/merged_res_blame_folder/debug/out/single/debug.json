@@ -220,6 +220,10 @@
         "source": "C:\\Users\\Admin\\Desktop\\Final\\App\\MotorShop\\app\\src\\main\\res\\drawable\\brand.png"
     },
     {
+        "merged": "C:\\Users\\Admin\\Desktop\\Final\\App\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_list_item.xml.flat",
+        "source": "C:\\Users\\Admin\\Desktop\\Final\\App\\MotorShop\\app\\src\\main\\res\\layout\\custom_list_item.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\Desktop\\Final\\App\\MotorShop\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_people.xml.flat",
         "source": "C:\\Users\\Admin\\Desktop\\Final\\App\\MotorShop\\app\\src\\main\\res\\menu\\menu_people.xml"
     },

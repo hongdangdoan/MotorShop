@@ -26,6 +26,7 @@ import com.example.motorshop.datasrc.Customer;
 import com.example.motorshop.datasrc.Motor;
 import com.example.motorshop.datasrc.Depart;
 import com.example.motorshop.datasrc.Motor;
+import com.example.motorshop.helper.Helper;
 import com.example.motorshop.helper.Icon_Manager;
 
 import org.json.JSONArray;
@@ -54,15 +55,14 @@ public class QuanLy_DonDat extends AppCompatActivity {
     List<Customer> dsKh = new ArrayList<Customer>();
     List<BillDetail> dsDDX = new ArrayList<BillDetail>();
     List<BillDetail> dsDDPT = new ArrayList<BillDetail>();
-
+    Helper helper = new Helper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_ly_don_dat);
         setControl();
-        Intent inten = getIntent();
-        billType = inten.getStringExtra("loai_DD");
+
         tvLoc.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
         tvThemDD.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
         tvCTDD.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
@@ -759,30 +759,30 @@ public class QuanLy_DonDat extends AppCompatActivity {
                                     if (j == 0) {
 
                                         txtMa = new TextView(getApplicationContext());
-                                        tmp[j] = deleteCharAtIndex(tmp[j].toString(), 0);
+                                        tmp[j] = helper.deleteCharAtIndex(tmp[j].toString(), 0);
                                         txtMa.setText(tmp[j].toString());
                                         tbRow.addView(txtMa, 0);
                                     }
                                     if (j == 1) {
 
                                         txtND = new TextView(getApplicationContext());
-                                        tmp[j] = deleteCharAtIndex(tmp[j], 0);
-                                        tmp[j] = formatDate(tmp[j]);
+                                        tmp[j] = helper.deleteCharAtIndex(tmp[j], 0);
+                                        tmp[j] = helper.formatDate(tmp[j]);
                                         txtND.setText(tmp[j].toString());
                                         tbRow.addView(txtND, 1);
                                     }
                                     if (j == 2) {
 
                                         txtHoTen = new TextView(getApplicationContext());
-                                        tmp[j] = deleteCharAtIndex(tmp[j], 0);
-                                        tmp[j] = deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
+                                        tmp[j] = helper.deleteCharAtIndex(tmp[j], 0);
+                                        tmp[j] = helper.deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
                                         txtHoTen.setText(tmp[j].toString());
                                         tbRow.addView(txtHoTen, 2);
                                     }
                                     if (j == 3) {
 
                                         txtTongTien = new TextView(getApplicationContext());
-                                        tmp[j] = deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
+                                        tmp[j] = helper.deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
                                         txtTongTien.setText(tmp[j].toString());
                                         tbRow.addView(txtTongTien, 3);
                                     }
@@ -804,12 +804,12 @@ public class QuanLy_DonDat extends AppCompatActivity {
                                             }
 
                                             String[] str = object.toString().split(",");
-                                            int maHD = Integer.parseInt(deleteCharAtIndex(str[0],0));
+                                            int maHD = Integer.parseInt(helper.deleteCharAtIndex(str[0],0));
                                             String maHDtmp = String.valueOf(maHD);
-                                            String tmp = billType.concat("@");
-                                            tmp = tmp.concat(maHDtmp);
+//                                            String tmp = billType.concat("@");
+//                                            tmp = tmp.concat(maHDtmp);
                                             Intent intent = new Intent(QuanLy_DonDat.this, ChiTietDonDat.class);
-                                            intent.putExtra("loai_DD", tmp);
+                                            intent.putExtra("BillId", maHDtmp);
                                             startActivity(intent);
 
                                         }
@@ -833,15 +833,6 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     }
 
-    public String deleteCharAtIndex(String str,int index){
-        StringBuilder tmp = new StringBuilder(str);
-        tmp.deleteCharAt(index);
-        return tmp.toString();
-    }
-    public String formatDate(String date){
-        date = date.replace("/","");
-        String str[] = date.split(" ");
-        return str[0].toString();
-    }
+
 
 }

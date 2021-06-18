@@ -29,7 +29,7 @@
 
                 <TextView
                     android:id="@+id/txtViewHoaDon_Ma"
-                    android:layout_width="100dp"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:text="Mã sản phẩm"/>
 

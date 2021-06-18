@@ -2281,6 +2281,7 @@ int id textSpacerNoButtons 0x7f0801cc
 int id textSpacerNoTitle 0x7f0801cd
 int id textStart 0x7f0801ce
 int id textTop 0x7f0801cf
+int id textView_listItem 0x7f080203
 int id text_input_end_icon 0x7f0801d0
 int id text_input_error_icon 0x7f0801d1
 int id text_input_start_icon 0x7f0801d2
@@ -2401,6 +2402,7 @@ int layout activity_menu_don_dat 0x7f0b0021
 int layout activity_quan_ly_don_dat 0x7f0b0022
 int layout activity_verify 0x7f0b0023
 int layout custom_dialog 0x7f0b0024
+int layout custom_list_item 0x7f0b0089
 int layout design_bottom_navigation_item 0x7f0b0025
 int layout design_bottom_sheet_dialog 0x7f0b0026
 int layout design_layout_snackbar 0x7f0b0027

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.motorshop.activity.R;
 import com.example.motorshop.activity.bill.Menu_DonDat;
+import com.example.motorshop.activity.bill.QuanLy_DonDat;
 import com.example.motorshop.datasrc.Main;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 if(position == 2){
-                    Intent intent = new Intent(getApplicationContext(), Menu_DonDat.class);
+                    Intent intent = new Intent(getApplicationContext(), QuanLy_DonDat.class);
                     startActivity(intent);
 //                    Log.d(TAG, "onItemClick gridview: " + itemList.get(position).getName());
                 }

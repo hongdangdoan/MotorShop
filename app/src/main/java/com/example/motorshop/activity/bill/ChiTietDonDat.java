@@ -2,17 +2,29 @@ package com.example.motorshop.activity.bill;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.motorshop.activity.R;
 import com.example.motorshop.datasrc.BillDetail;
 import com.example.motorshop.datasrc.Accessory;
+import com.example.motorshop.datasrc.Customer;
 import com.example.motorshop.datasrc.Motor;
+import com.example.motorshop.helper.Helper;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +34,15 @@ public class ChiTietDonDat extends AppCompatActivity {
     String billM = "XE";
     String billA = "PT";
 
-    String billType, maHD;
+    String billType;
+    int billId;
     TableLayout tblayoutBang;
     TextView tvHD;
     List<BillDetail> dsDDX = new ArrayList<BillDetail>();
     List<Motor> dsXe = new ArrayList<Motor>();
     List<Accessory> dsPT = new ArrayList<Accessory>();
     List<BillDetail> dsDDPT = new ArrayList<BillDetail>();
-
+    Helper helper = new Helper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +51,11 @@ public class ChiTietDonDat extends AppCompatActivity {
 
         setControl();
         Intent inten = getIntent();
-        String tmp[] = inten.getStringExtra("loai_DD").toString().split("@");
-        billType = tmp[0];
-        maHD = tmp[1].toString();
-        tvHD.setText("CHI TIẾT HOÁ ĐƠN " + maHD);
-//        loadHDDX();
-//        showHD();
+        String tmp = inten.getStringExtra("BillId").toString();
+
+        billId = Integer.parseInt(tmp);
+        tvHD.setText("CHI TIẾT HOÁ ĐƠN " + billId);
+        showBillDetail();
     }
 
     private void setControl() {
@@ -51,90 +63,92 @@ public class ChiTietDonDat extends AppCompatActivity {
         tvHD = (TextView) findViewById(R.id.tvHD);
     }
 
-//    public void loadHDDX() {
-//        if (billType.equals(billM)) {
-//
-//            dsXe = dbR.loadDSXE();
-//            List<ChiTietSanPhamDonHang> tmp = new ArrayList<ChiTietSanPhamDonHang>();
-//            tmp = dbR.loadDSDDX();
-//            for (int i = 0; i < tmp.size(); i++) {
-//                if (tmp.get(i).getMaDH().equals(maHD)) {
-//                    dsDDX.add(tmp.get(i));
-//                }
-//            }
-//        }
-//        if (billType.equals(billA)) {
-//            dsPT = dbR.loadDSPT();
-//            List<ChiTietSanPhamDonHang> tmp = new ArrayList<ChiTietSanPhamDonHang>();
-//            tmp = dbR.loadDSDDPT();
-//            for (int i = 0; i < tmp.size(); i++) {
-//                if (tmp.get(i).getMaDH().equals(maHD)) {
-//                    dsDDPT.add(tmp.get(i));
-//
-//                }
-//            }
-//        }
-//
-//    }
 
-//    public void showHD() {
-//
-//        TableRow tbRow = null;
-//
-//        TextView maSP;
-//        TextView tenSP = new TextView(getApplicationContext());
-//        TextView sl = new TextView(getApplicationContext());
-//        TextView donGia = new TextView(getApplicationContext());
-//        if (billType.equals(billM)) {
-//            for (int i = 0; i < dsDDX.size(); i++) {
-//
-//                sl = new TextView(getApplicationContext());
-//                donGia = new TextView(getApplicationContext());
-//                tenSP = new TextView(getApplicationContext());
-//                maSP = new TextView(getApplicationContext());
-//                maSP.setText(dsDDX.get(i).getTenSP());
-//                for (int j = 0; j < dsXe.size(); j++) {
-//                    if (dsXe.get(j).getMaSP().equals(dsDDX.get(i).getTenSP())) {
-//                        tenSP.setText(dsXe.get(j).getTenSP());
-//                        break;
-//                    }
-//                }
-//                sl.setText(String.valueOf(dsDDX.get(i).getSoLuong()));
-//                donGia.setText(String.valueOf(dsDDX.get(i).getDonGiaBan()));
-//                tbRow = new TableRow(getApplicationContext());
-//                tbRow.addView(maSP, 0);
-//                tbRow.addView(tenSP, 1);
-//                tbRow.addView(sl, 2);
-//                tbRow.addView(donGia, 3);
-//                tblayoutBang.addView(tbRow);
-//            }
-//
-//        }
-//        if (billType.equals(billA)) {
-//            System.out.println("kiem tra");
-//            System.out.println(dsDDPT.size());
-//            for (int i = 0; i < dsDDPT.size(); i++) {
-//                sl = new TextView(getApplicationContext());
-//                donGia = new TextView(getApplicationContext());
-//                tenSP = new TextView(getApplicationContext());
-//                maSP = new TextView(getApplicationContext());
-//                maSP.setText(dsDDPT.get(i).getTenSP());
-//                for (int j = 0; j < dsPT.size(); j++) {
-//                    if (dsPT.get(j).getMaSP().equals(dsDDPT.get(i).getTenSP())) {
-//                        tenSP.setText(dsPT.get(j).getTenSP());
-//                        break;
-//                    }
-//                }
-//                tbRow = new TableRow(getApplicationContext());
-//                sl.setText(String.valueOf(dsDDPT.get(i).getSoLuong()));
-//                donGia.setText(String.valueOf(dsDDPT.get(i).getDonGiaBan()));
-//                tbRow.addView(maSP, 0);
-//                tbRow.addView(tenSP, 1);
-//                tbRow.addView(sl, 2);
-//                tbRow.addView(donGia, 3);
-//                tblayoutBang.addView(tbRow);
-//            }
-//        }
-//    }
 
+    public void showBillDetail(){
+        System.out.println("test api");
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://192.168.1.8:8080/api/motorshop/billDetails/getDetailOfAnOrder?billId="+billId;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        System.out.println("Response is: "+ response.toString());
+                        try {
+                            JSONArray json = new JSONArray(response.toString());
+                            System.out.println("Length");
+                            System.out.println(json.length());
+                            for(int i=0;i<json.length();i++){
+                                TableRow tbRow = null;
+                                TextView txtId = null;
+                                TextView txtAmount = null;
+                                TextView txtName = null;
+                                TextView txtPrice = null;
+                                tbRow = new TableRow(getApplicationContext());
+                                JSONArray object = json.getJSONArray(i);
+                                System.out.println("Show value api");
+                                System.out.println(object.toString());
+                                String[] tmp = object.toString().split(",");
+                                for(int j=0;j<tmp.length;j++) {
+
+
+                                    if(j == 1) {
+
+                                        txtId = new TextView(getApplicationContext());
+
+                                        txtId.setText(tmp[j].toString());
+                                        tbRow.addView(txtId, 0);
+                                    }
+                                    if(j == 2) {
+
+                                        if(!tmp[j].isEmpty()){
+                                            txtName = new TextView(getApplicationContext());
+                                            tmp[j] = helper.deleteCharAtIndex(tmp[j], 0);
+                                            tmp[j] = helper.deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
+                                            if(tmp[j].length()>9){
+
+                                            }
+
+                                            txtName.setText(tmp[j].toString());
+                                            tbRow.addView(txtName, 1);
+                                        }
+
+                                    }
+                                    if(j == 3) {
+                                        txtAmount = new TextView(getApplicationContext());
+//                                        tmp[j] = helper.deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
+                                        txtAmount.setText(tmp[j].toString());
+                                        tbRow.addView(txtAmount, 2);
+                                    }
+                                    if(j==4) {
+                                        txtPrice = new TextView(getApplicationContext());
+                                        tmp[j] = helper.deleteCharAtIndex(tmp[j], tmp[j].length() - 1);
+                                        txtPrice.setText(tmp[j].toString());
+                                        tbRow.addView(txtPrice, 3);
+                                    }
+
+
+                                }
+                                tbRow.setId(i);
+                                tblayoutBang.addView(tbRow);
+
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("That error");
+                error.printStackTrace();
+            }
+        });
+        queue.add(stringRequest);
+
+    }
 }

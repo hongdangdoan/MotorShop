@@ -2282,6 +2282,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView_listItem
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2402,6 +2403,7 @@ layout activity_menu_don_dat
 layout activity_quan_ly_don_dat
 layout activity_verify
 layout custom_dialog
+layout custom_list_item
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
