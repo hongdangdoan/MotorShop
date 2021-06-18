@@ -9,7 +9,6 @@
         android:targetSdkVersion="30" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -18,7 +17,6 @@
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
-        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -26,19 +24,55 @@
         android:testOnly="true"
         android:theme="@style/Theme.MotorShop"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.example.motorshop.activity.login.LoginActivity" >
+        <activity android:name="com.example.motorshop.activity.bill.ChiTietDonDat" />
+        <!-- <activity android:name=".login.LoginActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name=".login.VerifyActivity" -->
+        <!-- android:parentActivityName=".login.LoginActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name="com.example.motorshop.activity.main.MainActivity"
+            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.motorshop.activity.login.VerifyActivity"
-            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" />
-        <activity
-            android:name="com.example.motorshop.activity.main.MainActivity"
-            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" />
+        <activity android:name="com.example.motorshop.activity.bill.Menu_DonDat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.motorshop.activity.bill.QuanLy_DonDat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.motorshop.activity.bill.DonDat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

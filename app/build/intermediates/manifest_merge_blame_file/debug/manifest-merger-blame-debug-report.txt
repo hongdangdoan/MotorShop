@@ -6,109 +6,158 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="16"
-8-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml
+8-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml
+9-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:5:5-67
-11-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:5:22-64
-12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:6:5-79
-12-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:6:22-76
-13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-13-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:11:5-81
-13-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:11:22-78
-14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15
-16    <application
-16-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:8:5-34:19
-17        android:name="androidx.multidex.MultiDexApplication"
-18        android:allowBackup="true"
-18-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:9:9-35
-19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.5.0] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\07adfc08fe16d3453ab9291511ec05fe\core-1.5.0\AndroidManifest.xml:24:18-86
-20        android:debuggable="true"
-21        android:fullBackupContent="true"
-21-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:10:9-41
-22        android:icon="@mipmap/ic_launcher"
-22-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:11:9-43
-23        android:label="@string/app_name"
-23-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:12:9-41
-24        android:roundIcon="@mipmap/ic_launcher_round"
-24-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:13:9-54
-25        android:supportsRtl="true"
-25-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:14:9-35
-26        android:testOnly="true"
-27        android:theme="@style/Theme.MotorShop"
-27-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:16:9-47
-28        android:usesCleartextTraffic="true" >
-28-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:15:9-44
-29        <activity android:name="com.example.motorshop.activity.login.LoginActivity" >
-29-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:18:9-24:20
-29-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:18:19-54
-30            <intent-filter>
-30-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:19:13-23:29
-31                <action android:name="android.intent.action.MAIN" />
-31-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:20:17-69
-31-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:20:25-66
+11-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:4:5-66
+11-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:11:5-81
+12-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:11:22-78
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14
+15    <application
+15-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:5:5-63:19
+16        android:name="androidx.multidex.MultiDexApplication"
+17        android:allowBackup="true"
+17-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:7:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\07adfc08fe16d3453ab9291511ec05fe\core-1.5.0\AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:8:9-43
+21        android:label="@string/app_name"
+21-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:9:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:10:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:11:9-35
+24        android:testOnly="true"
+25        android:theme="@style/Theme.MotorShop"
+25-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:12:9-47
+26        android:usesCleartextTraffic="true" >
+26-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:6:9-44
+27        <activity android:name="com.example.motorshop.activity.bill.ChiTietDonDat" />
+27-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:13:9-65
+27-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:13:19-53
+28        <!-- <activity android:name=".login.LoginActivity"> -->
+29        <!-- <intent-filter> -->
+30        <!-- <action android:name="android.intent.action.MAIN" /> -->
+31
 32
-33                <category android:name="android.intent.category.LAUNCHER" />
-33-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:22:17-77
-33-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:22:27-74
-34            </intent-filter>
-35        </activity>
-36        <activity
-36-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:26:9-27:64
-37            android:name="com.example.motorshop.activity.login.VerifyActivity"
-37-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:26:19-55
-38            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" />
-38-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:27:13-62
-39        <activity
-39-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:29:9-30:64
-40            android:name="com.example.motorshop.activity.main.MainActivity"
-40-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:29:19-52
-41            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" />
-41-->D:\UNI\HK8\Phat trien UDDD\TEAM PROJECT\MotorShop\app\src\main\AndroidManifest.xml:30:13-62
+33        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+34        <!-- </intent-filter> -->
+35        <!-- </activity> -->
+36        <!-- <activity -->
+37        <!-- android:name=".login.VerifyActivity" -->
+38        <!-- android:parentActivityName=".login.LoginActivity"> -->
+39        <!-- <intent-filter> -->
+40        <!-- <action android:name="android.intent.action.MAIN" /> -->
+41
 42
-43        <provider
-43-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:14:9-22:20
-44            android:name="androidx.core.content.FileProvider"
-44-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:15:13-62
-45            android:authorities="com.example.motorshop.provider"
-45-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:16:13-60
-46            android:exported="false"
-46-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:17:13-37
-47            android:grantUriPermissions="true" >
-47-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:18:13-47
-48            <meta-data
-48-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:19:13-21:58
-49                android:name="android.support.FILE_PROVIDER_PATHS"
-49-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:20:17-67
-50                android:resource="@xml/provider_paths" />
-50-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\c5a30f5747ee4ee5d8882b89c84fe059\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:21:17-55
-51        </provider>
-52
-53        <activity
-53-->[gun0912.ted:tedpermission:2.2.3] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\87ce3059a2a00f57587989f26b6592b3\jetified-tedpermission-2.2.3\AndroidManifest.xml:10:9-14:67
-54            android:name="com.gun0912.tedpermission.TedPermissionActivity"
-54-->[gun0912.ted:tedpermission:2.2.3] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\87ce3059a2a00f57587989f26b6592b3\jetified-tedpermission-2.2.3\AndroidManifest.xml:11:13-75
-55            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
-55-->[gun0912.ted:tedpermission:2.2.3] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\87ce3059a2a00f57587989f26b6592b3\jetified-tedpermission-2.2.3\AndroidManifest.xml:12:13-144
-56            android:screenOrientation="unspecified"
-56-->[gun0912.ted:tedpermission:2.2.3] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\87ce3059a2a00f57587989f26b6592b3\jetified-tedpermission-2.2.3\AndroidManifest.xml:13:13-52
-57            android:theme="@style/Theme.Transparent.Permission" />
-57-->[gun0912.ted:tedpermission:2.2.3] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\87ce3059a2a00f57587989f26b6592b3\jetified-tedpermission-2.2.3\AndroidManifest.xml:14:13-64
-58        <activity
-58-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\8fb66f7302f6c169c432083d5f49d20b\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:10:9-14:75
-59            android:name="com.gun0912.tedonactivityresult.ProxyActivity"
-59-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\8fb66f7302f6c169c432083d5f49d20b\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:11:13-73
-60            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
-60-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\8fb66f7302f6c169c432083d5f49d20b\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:12:13-144
-61            android:screenOrientation="unspecified"
-61-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\8fb66f7302f6c169c432083d5f49d20b\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:13:13-52
-62            android:theme="@style/android:Theme.Translucent.NoTitleBar" />
-62-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\hungh\.gradle\caches\transforms-2\files-2.1\8fb66f7302f6c169c432083d5f49d20b\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:14:13-72
-63    </application>
-64
-65</manifest>
+43        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+44        <!-- </intent-filter> -->
+45        <!-- </activity> -->
+46        <activity
+46-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:30:9-38:20
+47            android:name="com.example.motorshop.activity.main.MainActivity"
+47-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:31:13-46
+48            android:parentActivityName="com.example.motorshop.activity.login.LoginActivity" >
+48-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:32:13-62
+49            <intent-filter>
+49-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:33:13-37:29
+50                <action android:name="android.intent.action.MAIN" />
+50-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:17-69
+50-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:25-66
+51
+52                <category android:name="android.intent.category.LAUNCHER" />
+52-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:17-77
+52-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:27-74
+53            </intent-filter>
+54        </activity>
+55        <activity android:name="com.example.motorshop.activity.bill.Menu_DonDat" >
+55-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:39:9-45:20
+55-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:39:19-51
+56            <intent-filter>
+56-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:33:13-37:29
+57                <action android:name="android.intent.action.MAIN" />
+57-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:17-69
+57-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:25-66
+58
+59                <category android:name="android.intent.category.LAUNCHER" />
+59-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:17-77
+59-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:27-74
+60            </intent-filter>
+61        </activity>
+62        <activity android:name="com.example.motorshop.activity.bill.QuanLy_DonDat" >
+62-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:46:9-52:20
+62-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:46:19-53
+63            <intent-filter>
+63-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:33:13-37:29
+64                <action android:name="android.intent.action.MAIN" />
+64-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:17-69
+64-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:25-66
+65
+66                <category android:name="android.intent.category.LAUNCHER" />
+66-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:17-77
+66-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:27-74
+67            </intent-filter>
+68        </activity>
+69        <activity android:name="com.example.motorshop.activity.bill.DonDat" >
+69-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:53:9-59:20
+69-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:53:19-46
+70            <intent-filter>
+70-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:33:13-37:29
+71                <action android:name="android.intent.action.MAIN" />
+71-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:17-69
+71-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:34:25-66
+72
+73                <category android:name="android.intent.category.LAUNCHER" />
+73-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:17-77
+73-->C:\Users\Admin\Desktop\Final\App\MotorShop\app\src\main\AndroidManifest.xml:36:27-74
+74            </intent-filter>
+75        </activity>
+76
+77        <provider
+77-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:14:9-22:20
+78            android:name="androidx.core.content.FileProvider"
+78-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:15:13-62
+79            android:authorities="com.example.motorshop.provider"
+79-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:16:13-60
+80            android:exported="false"
+80-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:17:13-37
+81            android:grantUriPermissions="true" >
+81-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:18:13-47
+82            <meta-data
+82-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:19:13-21:58
+83                android:name="android.support.FILE_PROVIDER_PATHS"
+83-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:20:17-67
+84                android:resource="@xml/provider_paths" />
+84-->[gun0912.ted:tedbottompicker:2.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\d6983e94dbf4591192c875925ea2436c\jetified-tedbottompicker-2.0.1\AndroidManifest.xml:21:17-55
+85        </provider>
+86
+87        <activity
+87-->[gun0912.ted:tedpermission:2.2.3] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e3b714f09d33c7c19130c63bafe2a0a8\jetified-tedpermission-2.2.3\AndroidManifest.xml:10:9-14:67
+88            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+88-->[gun0912.ted:tedpermission:2.2.3] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e3b714f09d33c7c19130c63bafe2a0a8\jetified-tedpermission-2.2.3\AndroidManifest.xml:11:13-75
+89            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
+89-->[gun0912.ted:tedpermission:2.2.3] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e3b714f09d33c7c19130c63bafe2a0a8\jetified-tedpermission-2.2.3\AndroidManifest.xml:12:13-144
+90            android:screenOrientation="unspecified"
+90-->[gun0912.ted:tedpermission:2.2.3] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e3b714f09d33c7c19130c63bafe2a0a8\jetified-tedpermission-2.2.3\AndroidManifest.xml:13:13-52
+91            android:theme="@style/Theme.Transparent.Permission" />
+91-->[gun0912.ted:tedpermission:2.2.3] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e3b714f09d33c7c19130c63bafe2a0a8\jetified-tedpermission-2.2.3\AndroidManifest.xml:14:13-64
+92        <activity
+92-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\18b869e7433babcabb79e8382ea7b2ca\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:10:9-14:75
+93            android:name="com.gun0912.tedonactivityresult.ProxyActivity"
+93-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\18b869e7433babcabb79e8382ea7b2ca\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:11:13-73
+94            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
+94-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\18b869e7433babcabb79e8382ea7b2ca\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:12:13-144
+95            android:screenOrientation="unspecified"
+95-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\18b869e7433babcabb79e8382ea7b2ca\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:13:13-52
+96            android:theme="@style/android:Theme.Translucent.NoTitleBar" />
+96-->[gun0912.ted:tedonactivityresult:1.0.6] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\18b869e7433babcabb79e8382ea7b2ca\jetified-tedonactivityresult-1.0.6\AndroidManifest.xml:14:13-72
+97    </application>
+98
+99</manifest>
