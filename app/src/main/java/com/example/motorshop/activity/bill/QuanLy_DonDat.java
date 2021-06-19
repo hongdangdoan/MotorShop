@@ -67,8 +67,8 @@ public class QuanLy_DonDat extends AppCompatActivity {
         tvThemDD.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
         tvCTDD.setTypeface(Icon_Manager.get_icons("fonts/fa-solid-900.ttf", getApplicationContext()));
 //        init_DonDat(billType);
-
-        showTheOrderList();
+        String url ="http://192.168.1.8:8080/api/motorshop/billDetails/getOrderDetail";
+        showTheOrderList(url);
 //        loadDSXeFromDB();
 
         setEven();
@@ -116,8 +116,9 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
                         tableLayout.removeViewAt(i);
                     }
-                    sortMoneyAscending();
-                    showTheOrderList();
+//                    sortMoneyAscending();
+                    String url ="http://192.168.1.8:8080/api/motorshop/billDetails/moneyin";
+                    showTheOrderList(url);
                     System.out.println("Sap xep tang dan");
                 }
 
@@ -127,8 +128,8 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
                         tableLayout.removeViewAt(i);
                     }
-                    sortMoneyDecrease();
-                    showTheOrderList();
+                    String url ="http://192.168.1.8:8080/api/motorshop/billDetails/moneyde";
+                    showTheOrderList(url);
                     System.out.println("Sap xep giam dan");
                 }
                 if (!edtMaDDH.getText().toString().equals("")) {
@@ -140,7 +141,8 @@ public class QuanLy_DonDat extends AppCompatActivity {
                     for (int i = tableLayout.getChildCount() - 1; i > 0; i--) {
                         tableLayout.removeViewAt(i);
                     }
-                    showTheOrderList();
+                    String url ="http://192.168.1.8:8080/api/motorshop/billDetails/getOrderDetail";
+                    showTheOrderList(url);
                 }
 
             }
@@ -270,26 +272,7 @@ public class QuanLy_DonDat extends AppCompatActivity {
 
     }
 
-//    public void addInfoToDDX() {
-//        if (billType.equals(billM)) {
-//
-//            for (int i = 0; i < dsDDX.size(); i++) {
-//                dsDDX.get(i).setCmnd(findDHByMADH(dsDDX.get(i).getMaDH()).getCmnd());
-//                dsDDX.get(i).setNgayDat(findDHByMADH(dsDDX.get(i).getMaDH()).getNgayDat());
-//                dsDDX.get(i).setTenNV(findDHByMADH(dsDDX.get(i).getMaDH()).getTenNV());
-//
-//            }
-//        }
-//        if (billType.equals(billA)) {
-//            for (int i = 0; i < dsDDPT.size(); i++) {
-//                dsDDPT.get(i).setCmnd(findDHByMADH(dsDDPT.get(i).getMaDH()).getCmnd());
-//                dsDDPT.get(i).setNgayDat(findDHByMADH(dsDDPT.get(i).getMaDH()).getNgayDat());
-//                dsDDPT.get(i).setTenNV(findDHByMADH(dsDDPT.get(i).getMaDH()).getTenNV());
-//
-//            }
-//        }
-//
-//    }
+
 
 
     public void init_DonDat_PT() {
@@ -575,7 +558,8 @@ public class QuanLy_DonDat extends AppCompatActivity {
             }
         }
         dsHD = tmp1;
-        showTheOrderList();
+        String url ="http://192.168.1.8:8080/api/motorshop/billDetails/getOrderDetail";
+        showTheOrderList(url);
         dsHD = tmp2;
 
     }
@@ -618,7 +602,8 @@ public class QuanLy_DonDat extends AppCompatActivity {
         dsDDX = new ArrayList<BillDetail>();
         dsDDX = dsDDXT;
         initDSHD();
-        showTheOrderList();
+        String url ="http://192.168.1.8:8080/api/motorshop/billDetails/getOrderDetail";
+        showTheOrderList(url);
         dsDDX = l;
 //        init_DonDat(billType);
 
@@ -727,11 +712,11 @@ public class QuanLy_DonDat extends AppCompatActivity {
         queue.add(stringRequest);
         return listBD;
     }
-    public void showTheOrderList(){
+    public void showTheOrderList(String url){
         System.out.println("test api");
         List<Customer> listCtm = new ArrayList<Customer>();
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://192.168.1.8:8080/api/motorshop/billDetails/getOrderDetail";
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

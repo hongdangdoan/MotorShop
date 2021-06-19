@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.motorshop.activity.R;
 import com.example.motorshop.datasrc.Accessory;
+import com.example.motorshop.datasrc.Bill;
 import com.example.motorshop.datasrc.BillDetail;
 import com.example.motorshop.datasrc.Customer;
 import com.example.motorshop.datasrc.Motor;
@@ -54,6 +55,7 @@ public class DonDat extends AppCompatActivity {
     List<HangHoa> dsHH = new ArrayList<HangHoa>();
     Helper helper = new Helper();
     String billType;
+    String staffID = "NV01";
     String billM = "XE";
     String billA = "PT";
     int count = 0;
@@ -123,15 +125,43 @@ public class DonDat extends AppCompatActivity {
                 String hoTen = edtHoTen.getText().toString();
                 String cmnd = edtCmnd.getText().toString();
                 String diaChi = edtDiaChi.getText().toString();
-                long millis=System.currentTimeMillis();
-                java.sql.Date date=new java.sql.Date(millis);
+                long millis = System.currentTimeMillis();
+                java.sql.Date date = new java.sql.Date(millis);
                 String tmp[] = date.toString().split("-");
-                String nd = tmp[0]+"/"+tmp[1]+"/"+tmp[2];
+                String nd = tmp[0] + "/" + tmp[1] + "/" + tmp[2];
+                BillDetail bd = new BillDetail();
 
 
-                Toast.makeText(DonDat.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                for (int i = 0; i < dsHH.size(); i++) {
+                    bd = new BillDetail();
+                    bd.setMotorId(dsHH.get(i).getMaSP());
+                    bd.setPrice(dsHH.get(i).getDonGia());
+                    bd.setAmount(dsHH.get(i).getSoLuong());
+                    bd.setBillId(Integer.parseInt(maDDH));
+
+                    //API
+                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                    String url = "http://192.168.1.8:8080/api/motorshop/billDetails"
+                            + bd.toString();
+                    StringRequest request = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            System.out.println("That error POST data");
+                            error.printStackTrace();
+                        }
+                    });
+                    queue.add(request);
+                }
             }
         });
+
+
     }
 
 
@@ -154,22 +184,70 @@ public class DonDat extends AppCompatActivity {
                                 JSONArray json = new JSONArray(response.toString());
                                 System.out.println("Length");
                                 System.out.println(json.length());
-                                String[] tmp = new String[json.length()];
-                                for(int i=0;i<json.length();i++){
+                                String[] tmp = response.toString().split(",");
+                                String id = helper.deleteCharAtIndex(tmp[0],0);
+                                id = helper.deleteCharAtIndex(id,0);
+                                String name = helper.deleteCharAtIndex(tmp[1],0);
+                                name = helper.deleteCharAtIndex(name,name.length()-1);
+                                String amount = tmp[2];
+                                String price = helper.deleteCharAtIndex(tmp[3],tmp[3].length()-1);
+                                price = helper.deleteCharAtIndex(price,price.length()-1);
 
-                                    JSONArray object = json.getJSONArray(i);
-                                    System.out.println("Show value api");
-                                    System.out.println(object.toString());
-                                    tmp[i] = helper.deleteCharAtIndex(object.toString(), 0);
-                                    tmp[i] = helper.deleteCharAtIndex(tmp[i], 0);
-                                    tmp[i] = helper.deleteCharAtIndex(tmp[i],
-                                            tmp[i].length()-1);
-                                    tmp[i] = helper.deleteCharAtIndex(tmp[i],
-                                            tmp[i].length()-1);
-                                    System.out.println("after");
-                                    System.out.println(tmp[i]);
+                                HangHoa hangHoa = new HangHoa(Integer.parseInt(id), name,
+                                        Integer.parseInt(price), 1);
+                                int cost = 0;
+                                count++;
+                                boolean addNew = true;
+                                if (dsHH.size() <= 0) dsHH.add(hangHoa);
+                                else {
+
+                                    for (int i = 0; i < dsHH.size(); i++) {
+                                        if (dsHH.get(i).getMaSP()==
+                                                Integer.parseInt(id)) {
+                                            dsHH.get(i).setSoLuong(dsHH.get(i).getSoLuong() + 1);
+                                            addNew = false;
+
+                                        }
+
+                                    }
+                                    if (addNew) dsHH.add(hangHoa);
+                                }
+
+
+                                for (int i = 0; i < dsHH.size(); i++) {
+
+                                    TableRow tbRow = new TableRow(getApplicationContext());
+                                    TextView txtvCode = new TextView(getApplicationContext());
+                                    TextView txtvName = new TextView(getApplicationContext());
+                                    TextView txtvPrice = new TextView(getApplicationContext());
+                                    TextView txtvCount = new TextView(getApplicationContext());
+
+
+                                    txtvCode.setText(String.valueOf(dsHH.get(i).getMaSP()));
+                                    txtvName.setText(dsHH.get(i).getTenSP());
+                                    txtvPrice.setText(String.valueOf(dsHH.get(i).getDonGia()));
+                                    txtvCount.setText(String.valueOf(dsHH.get(i).getSoLuong()));
+
+
+                                    tbRow.addView(txtvCode, 0);
+                                    tbRow.addView(txtvName, 1);
+                                    tbRow.addView(txtvCount, 2);
+                                    tbRow.addView(txtvPrice, 3);
+                                    cost += dsHH.get(i).getDonGia() * dsHH.get(i).getSoLuong();
+
+
+                                    tbLayout.addView(tbRow, i + 1);
 
                                 }
+
+                                System.out.println(tbLayout.getChildCount());
+                                if (tbLayout.getChildCount() > 2)
+                                    for (int i = tbLayout.getChildCount()-1; i> dsHH.size(); i--) {
+                                        tbLayout.removeViewAt(i);
+                                    }
+
+                                edtHoaDon_ThanhTien.setText(String.valueOf(cost));
+
                                 //
 
                             } catch (JSONException e) {
@@ -186,187 +264,17 @@ public class DonDat extends AppCompatActivity {
             });
             queue.add(stringRequest);
             //
-//            HangHoa hangHoa = new HangHoa(moto.getMaSP(), moto.getTenSP(),
-//                    moto.getDonGia(), 1);
-//            int cost = 0;
-//            count++;
-//            boolean addNew = true;
-//            if (dsHH.size() <= 0) dsHH.add(hangHoa);
-//            else {
-//
-//                for (int i = 0; i < dsHH.size(); i++) {
-//                    if (dsHH.get(i).getMaSP().equals(moto.getMaSP())) {
-//                        dsHH.get(i).setSoLuong(dsHH.get(i).getSoLuong() + 1);
-//                        addNew = false;
-//
-//                    }
-//
-//                }
-//                if (addNew) dsHH.add(hangHoa);
-//            }
 
-
-            for (int i = 0; i < dsHH.size(); i++) {
-
-                TableRow tbRow = new TableRow(getApplicationContext());
-                TextView txtvCode = new TextView(getApplicationContext());
-                TextView txtvName = new TextView(getApplicationContext());
-                TextView txtvPrice = new TextView(getApplicationContext());
-                TextView txtvCount = new TextView(getApplicationContext());
-
-
-                txtvCode.setText(dsHH.get(i).getMaSP());
-                txtvName.setText(dsHH.get(i).getTenSP());
-                txtvPrice.setText(String.valueOf(dsHH.get(i).getDonGia()));
-                txtvCount.setText(String.valueOf(dsHH.get(i).getSoLuong()));
-
-
-                tbRow.addView(txtvCode, 0);
-                tbRow.addView(txtvName, 1);
-                tbRow.addView(txtvCount, 2);
-                tbRow.addView(txtvPrice, 3);
-//                cost += dsHH.get(i).getDonGia() * dsHH.get(i).getSoLuong();
-
-
-                tbLayout.addView(tbRow, i + 1);
-
-            }
-
-            System.out.println(tbLayout.getChildCount());
-            if (tbLayout.getChildCount() > 2)
-                for (int i = tbLayout.getChildCount()-1; i> dsHH.size(); i--) {
-                    tbLayout.removeViewAt(i);
-                }
-
-//            edtHoaDon_ThanhTien.setText(String.valueOf(cost));
 //
 
     }
-//
-//    private void initDDH() {
-//
-//        String maDDH = "HD" + String.valueOf(countDDH() + 1);
-//        edtMaDDH.setText(maDDH);
-//
-//    }
-//
-//    private int countDDH() {
-//
-//        List<DonHang> listDDH = new ArrayList<DonHang>();
-//        SQLiteDatabase db = new DBManager(getApplicationContext()).getReadableDatabase();
-//        Cursor c = db.rawQuery("SELECT * FROM DONDATHANG ", null);
-//
-//        if (c.moveToFirst()) {
-//            DonHang ddh = new DonHang();
-//            int i = 0;
-//            do {
-//                ddh = new DonHang();
-//                ddh.setMaDH(c.getString(0));
-//                ddh.setNgayDat(c.getString(1));
-//                ddh.setCmnd(c.getString(2));
-//                ddh.setTenNV(c.getString(3));
-//                listDDH.add(ddh);
-//
-//            } while (c.moveToNext());
-//
-//        }
-//        if (listDDH.size() == 0) return -1;
-//        else {
-//            String[] stt = listDDH.get(listDDH.size() - 1).getMaDH().split("D");
-//            return Integer.parseInt(stt[1].toString());
-//        }
-//    }
-//
-//    public void init_DonDat(String billType) {
-//        if (billType.equals(billM)) init_DonDat_Xe();
-//        if (billType.equals(billA)) init_DonDat_PT();
-//        dsKH = dbR.loadDsKH();
-//
-//    }
-//
-//    private void iniInfKH() {
-//
-//        String cmnd = edtCmnd.getText().toString();
-//        System.out.println(dsKH.size());
-//        for (int i = 0; i < dsKH.size(); i++) {
-//            if (cmnd.equals(dsKH.get(i).getCmnd())) {
-//                oldCtm = true;
-//                edtHoTen.setText(dsKH.get(i).getHoTen());
-//                edtDiaChi.setText(dsKH.get(i).getDiaChi());
-//            }
-//        }
-//
-//    }
-//
-//    public void init_DonDat_Xe() {
-//        dsXe = dbR.loadDSXE();
-//
-//        txtViewMaSP.setText("Mã Xe");
-//        txtViewTenSP.setText("Tên Xe");
-//        atcpChonSP.setHint("Chọn xe");
-//
-//    }
-//
-//    public void init_DonDat_PT() {
-//
-//        dsPT = dbR.loadDSPT();
-//        txtViewMaSP.setText("Mã phụ tùng");
-//        txtViewTenSP.setText("Tên phụ tùng");
-//        atcpChonSP.setHint("Chọn phụ tùng");
-//
-//    }
-//
-//    public List<Xe> loadDSXeFromDB() {
-//
-//        List<Xe> dsXe = new ArrayList<Xe>();
-//        SQLiteDatabase db = new DBManager(getApplicationContext()).getReadableDatabase();
-//        Cursor c = db.rawQuery("SELECT * FROM XE ", null);
-//
-//        if (c.moveToFirst()) {
-//            Xe moto = new Xe();
-//            int i = 0;
-//            do {
-//                moto = new Xe();
-//                moto.setMaSP(c.getString(0));
-//                moto.setTenNCC(c.getString(6));
-//                moto.setTenSP(c.getString(1));
-//                dsXe.add(moto);
-//
-//            } while (c.moveToNext());
-//
-//        }
-//        return dsXe;
-//    }
-//
-//    public List<Xe> loadDSPTFromDB() {
-//
-//        List<Xe> dsXe = new ArrayList<Xe>();
-//        SQLiteDatabase db = new DBManager(getApplicationContext()).getReadableDatabase();
-//        Cursor c = db.rawQuery("SELECT * FROM PHUTUNG ", null);
-//
-//        if (c.moveToFirst()) {
-//            PhuTung pt = new PhuTung();
-//            int i = 0;
-//            do {
-//                pt = new PhuTung();
-//                pt.setMaSP(c.getString(0));
-//                pt.setTenNCC(c.getString(6));
-//                pt.setTenSP(c.getString(1));
-//                dsPT.add(pt);
-//
-//            } while (c.moveToNext());
-//
-//        }
-//        return dsXe;
-//    }
-//
-//
+
     private void showProductList() {
 
             //API
             System.out.println("test api");
             List<Customer> listCtm = new ArrayList<Customer>();
-            RequestQueue queue = Volley.newRequestQueue(this);
+            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             String url ="http://192.168.1.8:8080/api/motorshop/billDetails/listPrname";
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {

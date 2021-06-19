@@ -2,12 +2,12 @@ package com.example.motorshop.activity.bill;
 
 public class HangHoa {
 
-    private String maSP;
+    private int maSP;
     private String tenSP;
     private int donGia;
     private int soLuong;
 
-    public HangHoa(String maSP, String tenSP, int donGia, int soLuong) {
+    public HangHoa(int maSP, String tenSP, int donGia, int soLuong) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
@@ -26,7 +26,7 @@ public class HangHoa {
     }
 
 
-    public void setMaSP(String maSP) {
+    public void setMaSP(int maSP) {
         this.maSP = maSP;
     }
 
@@ -38,7 +38,7 @@ public class HangHoa {
         this.soLuong = soLuong;
     }
 
-    public String getMaSP() {
+    public int getMaSP() {
         return maSP;
     }
 
